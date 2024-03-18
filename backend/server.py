@@ -189,7 +189,8 @@ def create_book():
             "author": data["author"],
             "synopsis": data["synopsis"],
             "category": data["category"],
-            "price": data["price"]
+            "price": data["price"],
+            "image" : data["image"]
         }
         all_books = list(books_collection.find())
         if(next((i for i in all_books if i["book"] == data["book"]), None)):
