@@ -10,7 +10,7 @@ client = MongoClient(uri)
 db = client["online-shopping"]
 #add all collection
 users_collection = db["users"]
-items_collection = db["items"]
+books_collection = db["books"]
 cards_collection = db["cards"]
  
 #main app
@@ -52,7 +52,8 @@ def create_user():
             "email": data["email"],
             "fullname": data["fullname"],
             "card_id": "",
-            "balance": 0
+            "balance": 0,
+            "book_access": []
         }
         all_users = list(users_collection.find())
         if(next((i for i in all_users if i["user"] == data["user"]), None)):
@@ -61,7 +62,7 @@ def create_user():
             users_collection.insert_one(new_user)
             return jsonify(new_user),200
     except Exception as e:
-        print(e)
+        return jsonify({"error": str(e)}), 500
      
 @app.route("/users/<int:user_id>", methods = ["PUT"])
 @cross_origin()
@@ -74,6 +75,31 @@ def update_user(user_id):
         return jsonify(user), 200
     else:
         return jsonify({"error": "User not found"}), 404
+
+@app.route("/users/<int:user_id>/add_book", methods=["PUT"])
+@cross_origin()
+def add_book_to_user(user_id):
+    try:
+        data = request.get_json()
+        book_id = data.get("book_id")
+        if not book_id:
+            return jsonify({"error": "Book ID is required"}), 400
+        
+        user = users_collection.find_one({"_id": user_id})
+        if not user:
+            return jsonify({"error": "User not found"}), 404
+        
+        if int(book_id) in user["book_access"]:
+            return jsonify({"message": "Book already in user's book_access"}), 200
+        
+        users_collection.update_one(
+            {"_id": user_id},
+            {"$push": {"book_access": int(book_id)}}
+        )
+
+        return jsonify({"message": "Book added to user's book_access"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 #cards
 @app.route("/cards", methods = ["GET"])
@@ -110,7 +136,7 @@ def create_card():
             cards_collection.insert_one(new_card)
             return jsonify(new_card),200
     except Exception as e:
-        print(e)
+        return jsonify({"error": str(e)}), 500
      
 @app.route("/cards/<int:card_id>", methods = ["PUT"])
 @cross_origin()
@@ -135,5 +161,67 @@ def delete_card(card_id):
     else:
         return jsonify({"error": "Card not found"}), 404
     
+#books
+@app.route('/books', methods = ["GET"])
+@cross_origin()
+def get_all_books():
+    all_books = books_collection.find()
+    return jsonify({"books":[i for i in all_books]})
+
+@app.route("/books/<int:book_id>", methods = ["GET"])
+@cross_origin()
+def get_book(book_id):
+    all_books = books_collection.find()
+    book = next( (i for i in all_books if i["_id"] == book_id), None)
+    if book:
+        return jsonify(book)
+    else:
+        return jsonify({"error": "Book not found"}), 404
+     
+@app.route("/books", methods = ["POST"])
+@cross_origin()
+def create_book():
+    try:
+        data = request.get_json()
+        new_book = {
+            "_id": books_collection.count_documents({}) + 1,
+            "title": data["title"],
+            "author": data["author"],
+            "synopsis": data["synopsis"],
+            "category": data["category"],
+            "price": data["price"]
+        }
+        all_books = list(books_collection.find())
+        if(next((i for i in all_books if i["book"] == data["book"]), None)):
+            return jsonify( {"error":"Cannot create new user"}), 500
+        else:
+            books_collection.insert_one(new_book)
+            return jsonify(new_book),200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+     
+@app.route("/books/<int:book_id>", methods = ["PUT"])
+@cross_origin()
+def update_book(book_id):
+    all_books = books_collection.find()
+    book = next( (i for i in all_books if i["_id"] == book_id), None)
+    if book:
+        data = request.get_json()
+        books_collection.update_one({"_id": book_id}, {"$set": data})
+        return jsonify(book), 200
+    else:
+        return jsonify({"error": "book not found"}), 404
+
+@app.route("/books/<int:book_id>",methods=["DELETE"])
+@cross_origin()
+def delete_book(book_id):
+    all_books = books_collection.find()
+    book = next((b for b in all_books if b["id"] == book_id),None)
+    if book:
+        books_collection.delete_one({"_id": book_id})
+        return jsonify({"message": "Book deleted successfully"}), 200
+    else:
+        return jsonify({"error":"Book not found"}), 404    
+
 if __name__=="__main__":
     app.run(host = "0.0.0.0", port = 5000, debug = True)
