@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import loginLogo from "./images/Khaoklong.png";
+import "/.login.css"
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,7 +11,7 @@ const LoginForm = () => {
 
   return (
     <div className="login-container">
-      <img className='login-logo' src={loginLogo} alt="Login Logo" />
+      <img className='login-logo' src={"/images/Khaoklong.png"} alt="Login Logo" />
       <h2 className="login-title">ยินดีต้อนรับ เข้าสู่ระบบ!</h2>
       <p className = "login-subtitle">หากมีบัญชีแล้ว สามารถเข้าสู่ระบบด้วยบัญชีเดิมได้เลย</p>
       <input
