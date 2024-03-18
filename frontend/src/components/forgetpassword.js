@@ -29,11 +29,11 @@ const Forgetpassword = (props) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
-            <p className="forget-options">ระบบจะทำการส่งลิงก์คำขอเพื่อตั้งรหัสผ่านใหม่ให้คุณผ่านทางอีเมล </p>
-            <div class="button-container">
+              <p className="forget-options">ระบบจะทำการส่งลิงก์คำขอเพื่อตั้งรหัสผ่านใหม่ให้คุณผ่านทางอีเมล </p>
+              <div class="button-container">
                 <button type="submit" className="forget-button">ยกเลิก</button>
                 <button type="button" className="forget-button2">ตกลง</button>
-            </div>
+              </div>
             </div>
         </div>
     </div>
