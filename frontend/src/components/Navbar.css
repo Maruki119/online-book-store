@@ -1,0 +1,110 @@
+.nav_container
+{
+    display: flex;
+    height: 105px;
+    background-color: rgb(241, 241, 241);
+    border-bottom: 2px solid #436850;
+}
+
+.logo{
+    width: 145px ;
+    height: 85px;
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 40px;  
+    margin-left: 25px; 
+}
+
+.logo img {
+    width: 85px ;
+    height: 85px ;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.menu{
+    width: 32px ;
+    height: 32px;
+    display: flex;
+    padding-top: 37px;
+    padding-bottom: 35px;
+    padding-left: 60px;
+}
+
+h1{
+    display: flex;
+    width: 120px;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    color:#436850;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 25px;
+}
+
+.App-search{
+    width: 750px;
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    padding: 35px;
+}
+
+input {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #436850;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.Sign-in .sign-in-button{
+ display: flex;
+ height: 50px;
+ justify-content: center;
+ align-items: center;
+ color: white;
+ padding: 15px;
+ text-align: center;
+ font-size: 16px;
+ background-color: #436850;
+ border: none;
+ border-radius: 10px;
+}
+
+.Sign-up .sign-up-button{
+display: flex;
+height: 50px;
+justify-content: center;
+align-items: center;
+color: #436850;
+padding: 15px;
+text-align: center;
+font-size: 16px;
+border-radius: 10px;
+border: 2px solid #436850;
+background-color: #ffffff;
+}
+
+.Sign-in {
+ display: flex;
+ width: 150px;
+ align-items: center;
+ margin-left: 30px;
+ margin-right: 10px;
+}
+
+.Sign-up {
+ display: flex;
+ width: 150px;
+ align-items: center;
+ margin-right: 50px;
+}
+
+
+
+
