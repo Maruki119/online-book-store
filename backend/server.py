@@ -15,6 +15,8 @@ cards_collection = db["cards"]
  
 #main app
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
  
 #greeting api
 @app.route('/')
@@ -23,11 +25,13 @@ def Greet():
 
 #users
 @app.route('/users', methods = ["GET"])
+@cross_origin()
 def get_all_users():
     all_users = users_collection.find()
     return jsonify({"users":[i for i in all_users]})
 
 @app.route("/users/<int:user_id>", methods = ["GET"])
+@cross_origin()
 def get_user(user_id):
     all_users = users_collection.find()
     user = next( (i for i in all_users if i["_id"] == user_id), None)
@@ -37,6 +41,7 @@ def get_user(user_id):
         return jsonify({"error": "User not found"}), 404
      
 @app.route("/users", methods = ["POST"])
+@cross_origin()
 def create_user():
     try:
         data = request.get_json()
@@ -59,6 +64,7 @@ def create_user():
         print(e)
      
 @app.route("/users/<int:user_id>", methods = ["PUT"])
+@cross_origin()
 def update_user(user_id):
     all_users = users_collection.find()
     user = next( (i for i in all_users if i["_id"] == user_id), None)
@@ -71,11 +77,13 @@ def update_user(user_id):
 
 #cards
 @app.route("/cards", methods = ["GET"])
+@cross_origin()
 def get_all_cards():
     all_cards = cards_collection.find()
     return jsonify({"cards":[i for i in all_cards]})
 
 @app.route("/cards/<int:card_id>", methods = ["GET"])
+@cross_origin()
 def get_card(card_id):
     all_cards = cards_collection.find()
     card = next( (i for i in all_cards if i["_id"] == card_id), None)
@@ -85,6 +93,7 @@ def get_card(card_id):
         return jsonify({"error": "Card not found"}), 404
 
 @app.route("/cards", methods = ["POST"])
+@cross_origin()
 def create_card():
     try:
         data = request.get_json()
@@ -104,6 +113,7 @@ def create_card():
         print(e)
      
 @app.route("/cards/<int:card_id>", methods = ["PUT"])
+@cross_origin()
 def update_card(card_id):
     all_cards = cards_collection.find()
     card = next( (i for i in all_cards if i["_id"] == card_id), None)
@@ -115,6 +125,7 @@ def update_card(card_id):
         return jsonify({"error": "Card not found"}), 404
     
 @app.route("/cards/<int:card_id>", methods = ["DELETE"])
+@cross_origin()
 def delete_card(card_id):
     all_cards = cards_collection.find()
     card = next( (i for i in all_cards if i["_id"] == card_id), None)
