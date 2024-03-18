@@ -1,0 +1,95 @@
+.sign-up-container {
+    max-width: 400px;
+    margin: 20px auto;
+    width: 375px;
+    height: 100%;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    overflow: auto; /* ป้องกันการเลื่อนทั้งแนวนอนและแนวตั้ง */
+}
+
+.logo-App img {
+    border-radius: 50%;
+    width: 200px;
+    height: auto;
+}
+
+.form-group {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.form-group input
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-group label::after {
+    content: "*"; /* เพิ่มเครื่องหมาย * หลังข้อความ */
+    color: #ADBC9F; /* กำหนดสีของเครื่องหมาย * เป็นสีแดง */
+}
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+input[type="email"],
+input[type="name"],
+input[type="password"] {
+    width: 360px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 1px;
+}
+
+.SignIn {
+    display: flex;
+    justify-content: left;
+    padding-top: none;
+    margin-top: -2.75%;
+    font-size: 14px;    
+}
+
+.login-link {
+    color: #436850; 
+    text-decoration: none;
+}
+
+.login-link:hover {
+    text-decoration: underline; /* เมื่อเอาเม้าส์ไปชี้ที่ลิงก์ ให้มีขีดเส้นใต้ข้อความ */
+    color: #12362a;
+}
+
+button {
+    background-color: #436951; /*436951*/
+    color: #fff;
+    padding: 10px 150px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    white-space: nowrap;
+    width: 102%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: none;
+}
+
+p{
+    margin-top: none;
+}
+
+button:hover {
+    background-color: #12362a;
+}
