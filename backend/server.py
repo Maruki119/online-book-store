@@ -50,7 +50,7 @@ def create_user():
             "user": data["user"],
             "password": data["password"],
             "email": data["email"],
-            "fullname": data["fullname"],
+            "fullname": "",
             "card_id": "",
             "balance": 0,
             "book_access": []
