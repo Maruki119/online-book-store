@@ -1,9 +1,8 @@
-import "./sign_up.css"
 import React, {useState, useEffect} from "react"
 import axios from "axios"
+import "./Sign-In.css"
 
 function SignUp(props) {
-
     const email = React.createRef();
     const name = React.createRef();
     const password = React.createRef();
@@ -29,37 +28,57 @@ function SignUp(props) {
     }
 
     return (
-        <div classname="SignUp">
-            <div className = "Bg-sign-up">
-                <div className="sign-up-container">
-                    <img classname="cross-logo-signUp" src='./images/cross-small.png' onClick={props.onCloseSignUp}/>
-                    <img className="login-logo" src="/images/Khaoklong.png" alt="Login Logo"/>
-                    <h2 classname="sign-up-title">สมัครบัญชี ข้าวกล่อง E-book</h2>
+        <div className = "SignUp">
+            <div className = "Full-BG">
+                <div className = "Container">
+                    <img className = "Exit-Button" src = "./images/cross-small.png" onClick = {props.onCloseSignUp}/>
+                    <img className = "Logo" src = "/images/Khaoklong.png" alt = "Login Logo"/>
+                    <h2 className = "SignUp-Title">สมัครบัญชี ข้าวกล่อง E-Book</h2>
 
-                    <div className="form-group">
-                        <label htmlFor="email">อีเมล </label>
-                        <input type="email" id="email" name="email" placeholder="อีเมล" ref = {email} required />
-                    </div>
+                    <p className = "SignUp-SubTitle">อีเมล</p>
+                    <input className = "TextBox-Email"
+                    type = "email"
+                    placeholder = "อีเมล"
+                    // value
+                    // onChange
+                    />
 
-                    <div className="form-group">
-                        <label htmlFor="name">ชื่อผู้ใช้ </label>
-                        <input type="name" id="name" name="name" placeholder="ชื่อผู้ใช้" ref = {name} required />
-                    </div> 
+                    <p className = "SignUp-SubTitle">ชื่อผู้ใช้</p>
+                    <input className = "TextBox-Name"
+                    type = "name"
+                    placeholder = "ชื่อผู้ใช้"
+                    // value
+                    // onChange
+                    />
 
-                    <div className="form-group">
-                        <label htmlFor="password">รหัสผ่าน </label>
-                        <input type="password" id="password" name="password" placeholder="รหัสผ่าน" ref = {password} required />
-                    </div>
-                    
-                    <button type="submit" class="SignUp-Button" onClick = {onSignUp}> สมัครสมาชิก</button>
+                    <p className = "SignUp-SubTitle">รหัสผ่าน</p>
+                    <input className = "TextBox-Password"
+                    type = "password"
+                    placeholder = "รหัสผ่าน"
+                    // value
+                    // onChange
+                    />
 
-                    <div class="SignIn">
+                    <p className = "SignUp-SubTitle">ยืนยันรหัสผ่าน</p>
+                    <input className = "TextBox-Password"
+                    type = "password"
+                    placeholder = "ยืนยันรหัสผ่าน"
+                    // value
+                    // onChange
+                    />
 
-                        <p>ฉันมีบัญชีข้าวกล่อง E-book อยู่แล้ว  
-                        <a href="#" class="login-link"> เข้าสู่ระบบ</a>
-                        </p>
+                    <button className = "Button"
+                    type = "submit"
+                    onClick = {onSignUp}>
+                        สมัครสมาชิก
+                    </button>
 
-                    </div>
+                    <p className = "Text-Reg">ฉันมีบัญชีข้าวกล่อง E-book อยู่แล้ว
+                        <a className = "SignIn-Link"
+                        href = "#">
+                            เข้าสู่ระบบ
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>
