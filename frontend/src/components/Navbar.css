@@ -7,6 +7,7 @@
 }
 
 .logo{
+    display: block;
     width: 145px ;
     height: 85px;
     display: flex;
@@ -104,14 +105,18 @@ background-color: #ffffff;
  margin-left: 30px;
  margin-right: 10px;
 }
-
+.sign-in-button:hover {
+    background-color: #ADBC9F;
+  }
 .Sign-up {
  display: flex;
  width: 150px;
  align-items: center;
  margin-right: 50px;
 }
-
+.sign-up-button:hover {
+    background-color: #ADBC9F;
+  }
 
 
 

@@ -29,16 +29,12 @@ function SignUp(props) {
     }
 
     return (
-        <div className = "Bg-sign-up">
-            <div className="sign-up-container">
-            <img className="cross-logo" src='/images/cross-small.png'onClick={props.onCloseSignUp}/>
-                <div className="logo-App">
-                    <img src="images/Khaoklong.png"/>
-                </div>
-
-                <h3>สมัครบัญชี ข้าวกล่อง E-book</h3>
-
-                <form>
+        <div classname="SignUp">
+            <div className = "Bg-sign-up">
+                <div className="sign-up-container">
+                    <img classname="cross-logo-signUp" src='./images/cross-small.png' onClick={props.onCloseSignUp}/>
+                    <img className="login-logo" src="/images/Khaoklong.png" alt="Login Logo"/>
+                    <h2 classname="sign-up-title">สมัครบัญชี ข้าวกล่อง E-book</h2>
 
                     <div className="form-group">
                         <label htmlFor="email">อีเมล </label>
@@ -64,7 +60,7 @@ function SignUp(props) {
                         </p>
 
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     );
