@@ -6,11 +6,14 @@ import SignUp from './sign_up';
 
 function Navbar()
 {
+    const Menu1 = ['นิยาย','การ์ตูน']
     const [IsOpenSignIn , setIsOpenSignIn] = useState(false);
     const [IsOpenSignup , setIsOpenSignUp] = useState(false);
+    const [OpenMenu1 , setOpenMenu1] = useState(false);
 
     let OpenSignIn = null ;
     let OpenSignUp = null ;
+
     if(IsOpenSignup){
         OpenSignUp = <SignUp onCloseSignUp = {() => setIsOpenSignUp(false) }/>
     }
@@ -25,10 +28,20 @@ function Navbar()
                 <div className="logo">
                     <img className='App-logo' src = '/images/Khaoklong.png'></img>
                 </div>
-                <div className="menu">
+                <div className="menu" onClick = {() => setOpenMenu1(!OpenMenu1)}>
                     <img className='App-menu' src = '/images/menu-burger.png'></img>
+                    <h1>เลือกหมวด</h1>
+                    {OpenMenu1 &&
+                    (
+                    <div className="menuList1" onClick={() => setOpenMenu1(false)}>
+                        <ul >
+                            {Menu1.map((Menu) => (
+                            <div key={Menu}>{Menu}</div>
+                            ))}
+                        </ul>
+                    </div>
+                    )}
                 </div>
-                <h1>เลือกหมวด</h1>
                 <div className="App-search">
                     <input
                         className='serch-input'
@@ -45,6 +58,10 @@ function Navbar()
                         <button className="sign-up-button" onClick={() => setIsOpenSignUp(true)}>สมัครสมาชิก</button>
                         {OpenSignUp}
                 </div>
+            </div>
+
+            <div className="List_container">
+
             </div>
         </div>
     );
