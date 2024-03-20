@@ -42,4 +42,4 @@ const Forgetpassword = (props) => {
 };
 
 
-export default ForgetPasswordForm;
+export default Forgetpassword;
