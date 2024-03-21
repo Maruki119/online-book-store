@@ -1,30 +1,53 @@
 import React, {useState, useEffect} from "react"
 import axios from "axios"
 import "./Sign-Up.css"
+import Navbar from "./Navbar"
 
 function SignUp(props) {
-    const email = React.createRef();
-    const name = React.createRef();
-    const password = React.createRef();
+    const [user, setUser] = useState({
+        email: "",
+        user: "",
+        password: "",
+        passwordCheck: ""
+    });
 
-    const [user, setUser] = useState();
     const [message, setMessage] = useState('');
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setUser(prevState => ({
+          ...prevState,
+          [name]: value
+        }));
+      };
+    
 
     const onSignUp = () => {
         const data = {
-            email: email.current.value,
-            user: name.current.value,
-            password: password.current.value
+            email: user.email,
+            user: user.user,
+            password: user.password
         };
-        axios.post("http://127.0.0.1:5000/users", data)
-            .the((response) => {
-                setUser(response.data)
-                setMessage("Sign-Up Successfully")
-            })
-            .catch(error => {
-                console.error("Error", error)
-                setMessage(error.response.data.message || 'An error occurred while adding the product.');
-            });
+        if(user.email == null || user.user == null || user.password == null || user.passwordCheck == null){
+            if(user.password == user.passwordCheck){
+                axios.post("http://127.0.0.1:5000/users", data)
+                    .then((response) => {
+                        setUser(response.data)
+                        setMessage("Sign-Up Successfully")
+                        alert("Sign-Up Successfully!")
+                        window.location.reload();
+                    })
+                    .catch(error => {
+                        console.error("Error", error)
+                        setMessage(error.response.data.message || 'An error occurred while adding the product.');
+                        alert("Your Username or E-mail has been used!");
+                    });
+            }else{
+                alert("Password not match!");
+            }
+        }else{
+            alert("Please, Fill in the required information!")
+        }
     }
 
     return (
@@ -39,32 +62,40 @@ function SignUp(props) {
                     <input className = "TextBox-Email"
                     type = "email"
                     placeholder = "อีเมล"
-                    // value
-                    // onChange
+                    id = "email"
+                    name = "email"
+                    value = {user.email}
+                    onChange = {handleChange}
                     />
 
                     <p className = "SignUp-SubTitle">ชื่อผู้ใช้</p>
                     <input className = "TextBox-Name"
-                    type = "name"
+                    type = "text"
                     placeholder = "ชื่อผู้ใช้"
-                    // value
-                    // onChange
+                    id = "user"
+                    name = "user"
+                    value = {user.user}
+                    onChange = {handleChange}
                     />
 
                     <p className = "SignUp-SubTitle">รหัสผ่าน</p>
                     <input className = "TextBox-Password"
                     type = "password"
                     placeholder = "รหัสผ่าน"
-                    // value
-                    // onChange
+                    id = "password"
+                    name = "password"
+                    value = {user.password}
+                    onChange = {handleChange}
                     />
 
                     <p className = "SignUp-SubTitle">ยืนยันรหัสผ่าน</p>
                     <input className = "TextBox-Password"
                     type = "password"
                     placeholder = "ยืนยันรหัสผ่าน"
-                    // value
-                    // onChange
+                    id = "passwordCheck"
+                    name = "passwordCheck"
+                    value = {user.passwordCheck}
+                    onChange = {handleChange}
                     />
 
                     <button className = "Button"

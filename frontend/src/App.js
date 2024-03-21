@@ -11,7 +11,6 @@ function App() {
       <Router>
         <Routes>
           <Route exact path = "/" element = {<Navbar/>}/>
-          <Route exact path = "/login" element = {<List/>}/>
         </Routes>
       </Router>
     </div>

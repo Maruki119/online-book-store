@@ -3,7 +3,6 @@ import './Navbar.css'
 import LoginForm from "./login";
 import SignUp from './sign_up';
 
-
 function Navbar()
 {
     const Menu1 = ['นิยาย','การ์ตูน']

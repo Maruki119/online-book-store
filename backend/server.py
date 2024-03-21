@@ -55,12 +55,17 @@ def create_user():
             "balance": 0,
             "book_access": []
         }
-        all_users = list(users_collection.find())
-        if(next((i for i in all_users if i["user"] == data["user"]), None)):
-            return jsonify( {"error":"Cannot create new user"}), 500
-        else:
-            users_collection.insert_one(new_user)
-            return jsonify(new_user),200
+        
+        existing_user = users_collection.find_one({"user": data["user"]})
+        if existing_user:
+            return jsonify({"error": "Username already exists"}), 400
+        
+        existing_email = users_collection.find_one({"email": data["email"]})
+        if existing_email:
+            return jsonify({"error": "Email already exists"}), 400
+            
+        users_collection.insert_one(new_user)
+        return jsonify(new_user),200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
      
