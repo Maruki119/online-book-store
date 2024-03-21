@@ -198,8 +198,8 @@ def create_book():
             "image" : data["image"]
         }
         all_books = list(books_collection.find())
-        if(next((i for i in all_books if i["book"] == data["book"]), None)):
-            return jsonify( {"error":"Cannot create new user"}), 500
+        if(next((i for i in all_books if i["title"] == data["title"]), None)):
+            return jsonify( {"error":"Cannot create new book"}), 500
         else:
             books_collection.insert_one(new_book)
             return jsonify(new_book),200
