@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react"
 import axios from "axios"
-import "./Sign-In.css"
+import "./Sign-Up.css"
 
 function SignUp(props) {
     const email = React.createRef();
