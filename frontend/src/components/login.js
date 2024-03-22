@@ -33,7 +33,7 @@ const LoginForm = (props) => {
 
           <input className="TextBox-Email"
             type="email"
-            placeholder="อีเมลหรือชื่อผู้ใช้"
+            placeholder="อีเมลหรือ"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />

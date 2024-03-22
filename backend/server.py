@@ -1,6 +1,10 @@
+import json
 from flask import Flask, jsonify, request
 from pymongo.mongo_client import MongoClient
 from flask_cors import CORS, cross_origin
+from flask_jwt_extended import create_access_token, get_jwt, get_jwt_identity, \
+                               unset_jwt_cookies, jwt_required, JWTManager
+from datetime import datetime, timedelta, timezone
 
 #add mongodb to api
 uri = "mongodb+srv://user:user@online-shopping.uyqkvxp.mongodb.net/?retryWrites=true&w=majority"
@@ -15,9 +19,75 @@ cards_collection = db["cards"]
  
 #main app
 app = Flask(__name__)
-cors = CORS(app)
+
 app.config['CORS_HEADERS'] = 'Content-Type'
+app.config['JWT_SECRET_KEY'] = 'Please-remember-to-change-me'
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours = 1)
+
+cors = CORS(app)
+jwt = JWTManager(app)
+
+@app.after_request
+@cross_origin()
+def refresh_expiring_jwts(response):
+    try:
+        exp_timestamp = get_jwt()["exp"]
+        now = datetime.now(timezone.utc)
+        target_timestamp = datetime.timestamp(now + timedelta(minutes=30))
+        if(target_timestamp > exp_timestamp):
+            access_token = create_access_token(identity = get_jwt_identity())
+            data = response.get_json()
+            if type(data) is dict:
+                data["access_token"] = access_token
+                response.data = json.dumps(data)
+        return response
+    except (RuntimeError, KeyError):
+        return response
  
+@app.route('/token', methods = ["POST"])
+@cross_origin()
+def create_token():
+    data = request.get_json()
+    email = data.get("email", None)
+    password = data.get("password", None)
+    
+    user = users_collection.find_one({"email": email, "password": password})
+    if not user:
+        return jsonify({"error": "Wrong email or password"}), 401
+    
+    access_token = create_access_token(identity = email)
+    response = {"access_token": access_token}
+    return jsonify(response)
+
+@app.route('/logout', methods = ["POST"])
+@cross_origin()
+def logout():
+    response = jsonify({"msg": "logout successful"})
+    unset_jwt_cookies(response)
+    return response
+ 
+@app.route('/profile')
+@jwt_required()
+@cross_origin()
+def my_profile():
+    current_user = get_jwt_identity()
+    user = users_collection.find_one({"email": current_user})
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+    
+    response_body = {
+        "_id": user.get("_id", ""),
+        "user": user.get("user", ""),
+        "email": user.get("email", ""),
+        "password": user.get("password", ""),
+        "fullname": user.get("fullname", ""),
+        "card_id": user.get("card_id", ""),
+        "balance": user.get("balance", ""),
+        "book_access": user.get("book_access", [])
+    }
+    
+    return jsonify(response_body)
+
 #greeting api
 @app.route('/')
 def Greet():
@@ -65,7 +135,7 @@ def create_user():
             return jsonify({"error": "Email already exists"}), 400
             
         users_collection.insert_one(new_user)
-        return jsonify(new_user),200
+        return jsonify(new_user), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
      
