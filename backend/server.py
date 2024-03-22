@@ -222,7 +222,7 @@ def update_book(book_id):
 @cross_origin()
 def delete_book(book_id):
     all_books = books_collection.find()
-    book = next((b for b in all_books if b["id"] == book_id),None)
+    book = next((b for b in all_books if b["_id"] == book_id),None)
     if book:
         books_collection.delete_one({"_id": book_id})
         return jsonify({"message": "Book deleted successfully"}), 200
