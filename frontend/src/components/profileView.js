@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './profile.css';
+import './profileView.css';
 
 const UserProfileView = () => {
   const [isUsageOpen, setIsUsageOpen] = useState(false);

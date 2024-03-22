@@ -1,26 +1,46 @@
 import React, { useState , useEffect } from "react";
+import axios from "axios";
 import './Sign-Up.css'
 
 const LoginForm = (props) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [loginForm, setloginForm] = useState({
+    email: "",
+    password: ""
+  })
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    if (email.trim() === "" || password.trim() === "") {
-      alert("กรุณากรอกทั้งอีเมลและรหัสผ่าน!!!");
+  function handleSubmit(event) {
+    if (loginForm.email.trim() === "" || loginForm.password.trim() === "") {
+      alert("กรุณากรอกทั้งอีเมลและรหัสผ่าน!");
       return;
     }
+  
+    axios.post("http://127.0.0.1:5000/token", {
+      email: loginForm.email,
+      password: loginForm.password
+    })
+    .then((response) => {
+      props.setToken(response.data.access_token);
+    }).catch((error) => {
+      if (error.response) {
+        console.log(error.response);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+        alert("อีเมล หรือรหัสผ่านผิดพลาด!");
+      }
+    });
+  
+    setloginForm({
+      password: ""
+    });
+  
+    event.preventDefault();
+  }
 
-    console.log("Logging in...");
- 
-    const confirmLogin = window.confirm("คุณแน่ใจหรือไม่ที่จะเข้าสู่ระบบ?");
-    if (confirmLogin) {
-
-      console.log("Logging in...");
-    }
-  };
+  function handleChange(event) { 
+    const {value, name} = event.target
+    setloginForm(prevNote => ({
+        ...prevNote, [name]: value})
+    )}
 
   return (
     <div className="SignIn">
@@ -33,16 +53,20 @@ const LoginForm = (props) => {
 
           <input className="TextBox-Email"
             type="email"
+            text={loginForm.email} 
+            name="email"
             placeholder="อีเมลหรือ"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={loginForm.email}
+            onChange={handleChange}
           />
 
           <input className="TextBox-Password"
             type="password"
+            text={loginForm.password} 
             placeholder="รหัสผ่าน"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            value={loginForm.password}
+            onChange={handleChange}
           />
 
           <p className="Text-Forget">

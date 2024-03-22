@@ -3,7 +3,7 @@ import './Navbar.css'
 import LoginForm from "./login";
 import SignUp from './sign_up';
 
-function Navbar()
+function Navbar(props)
 {
     const Menu1 = ['นิยาย','การ์ตูน']
     const [IsOpenSignIn , setIsOpenSignIn] = useState(false);
@@ -18,7 +18,7 @@ function Navbar()
     }
 
     if(IsOpenSignIn){
-        OpenSignIn = <LoginForm onCloseSignIn = {() => setIsOpenSignIn(false) }/>
+        OpenSignIn = <LoginForm setToken={props.setToken} onCloseSignIn = {() => setIsOpenSignIn(false) }/>
     }
 
     return (

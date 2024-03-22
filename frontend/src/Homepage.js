@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 
-function HomePage()
+function HomePage(props)
 {
 
 
     return (
         <div className="homepage-contrainer">
-            <Navbar/>
+            <Navbar setToken={props.setToken}/>
         </div>
 
     );
