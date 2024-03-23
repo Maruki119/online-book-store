@@ -1,10 +1,13 @@
 import React, { useState, useEffect,  } from "react";
 import axios from "axios";
 import './LoginLaeo.css'
+import './profileView.css'
 
 function LoginLaeo(props){
     
     const [profileData, setProfileData] = useState(null)
+    const [isOpenDropdown,setIsOpenDropdown] = useState(false)
+    const [isUsageOpen, setIsUsageOpen] = useState(false);
 
     useEffect(() => {
         getData();
@@ -38,6 +41,15 @@ function LoginLaeo(props){
         })
     }
     
+    const toggleDropdown = () => {
+        setIsOpenDropdown(!isOpenDropdown);
+    }
+
+    const toggleUsage = () => {
+        setIsUsageOpen(!isUsageOpen);
+        
+      };
+
     return (
         <div className="navbar">
             <div className="nav_container">
@@ -47,7 +59,6 @@ function LoginLaeo(props){
                 <div className="menu">
                     <img className='App-menu' src = '/images/menu-burger.png'></img>
                 </div>
-                
             
                 <h1>เลือกหมวด</h1>
                 <h1></h1>
@@ -68,17 +79,53 @@ function LoginLaeo(props){
                         <img src='/images/cart.png' alt="Cart" />
                     </button>
                 </div>
-                <div className="profile"> 
-                    <button className="buttonProfile">
+                <div className="profile">
+                    <button className="buttonProfile" onDoubleClick = {toggleDropdown}>
                         <img src='/images/profile.png' alt="Profile" />
+                        {isOpenDropdown && (
+                            <div className="frame">
+                            <div className="container">
+                              <div className="header">
+                                <img
+                                  className="avatar"
+                                  src="https://bootdey.com/img/Content/avatar/avatar6.png"
+                                  alt="Avatar"
+                                />
+                                <p className="userName">John Doe</p>
+                              </div>
+                      
+                              <div className="items">
+                                <div className="item">
+                                  <p><span role="img" aria-label="coin">💰</span> ยอดเงินคงเหลือ</p>
+                                </div>
+                                <div className="item" onClick={toggleUsage}>
+                                  <p>การใช้งาน</p>
+                                  {isUsageOpen && (
+                                    <ul className="submenu">
+                                      <li>ชั้นหนังสือ</li>
+                                      <li>ประวัติการซื้อ</li>
+                                    </ul>
+                                  )}
+                                </div>
+                                <div className="item">
+                                  <p>ตั้งค่าบัญชี</p>
+                                </div>
+                                <div className="item logout">
+                                  <p>ออกจากระบบ</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
                     </button>
-                    {profileData && (
+
+                    {/* {profileData && (
                         <div className="profileData">
                             <p>User: {profileData.user}</p>
                             <p>Email: {profileData.email}</p>
                             <p>Fullname: {profileData.fullname}</p>
                         </div>
-                    )}
+                    )} */}
                 </div>
             </div>
         </div>
