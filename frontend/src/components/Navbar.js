@@ -2,6 +2,9 @@ import React, { useState, useEffect,  } from "react";
 import './Navbar.css'
 import LoginForm from "./login";
 import SignUp from './sign_up';
+import ListCartoon from "./ListCartoon";
+import { lisCartoons } from "./listCartoons";
+
 
 function Navbar(props)
 {
@@ -27,20 +30,21 @@ function Navbar(props)
                 <div className="logo">
                     <img className='App-logo' src = '/images/Khaoklong.png'></img>
                 </div>
-                <div className="menu" onClick = {() => setOpenMenu1(!OpenMenu1)}>
-                    <img className='App-menu' src = '/images/menu-burger.png'></img>
-                    <h1>เลือกหมวด</h1>
-                </div>
-                {OpenMenu1 &&
-                    (
-                        <div className="menuList1" onClick={() => setOpenMenu1(false)}>
-                            <ul >
-                                {Menu1.map((Menu) => (
-                                <div key={Menu}>{Menu}</div>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
+                <nav>
+                    <ul className="menus">
+                    <img className='App-logo' src = '/images/menu-burger.png'></img>
+                        {lisCartoons.map((menu, index) => {
+                            const depthLevel = 0;
+                            return (
+                                <ListCartoon
+                                    items={menu}
+                                    key={index}
+                                    depthLevel={depthLevel}
+                                />
+                            );
+                        })}
+                    </ul>
+                </nav>
                 <div className="App-search">
                     <input
                         className='serch-input'
