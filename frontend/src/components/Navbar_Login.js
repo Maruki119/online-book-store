@@ -86,11 +86,7 @@ function LoginLaeo(props){
     };
 
     function handleLogout(){
-        axios.post("http://127.0.0.1:5000/logout", {
-            headers: {
-                Authorization: 'Bearer ' + props.token
-            }
-        })
+        axios.post("http://127.0.0.1:5000/logout")
         .then((response) => {
             removeToken();
             console.log(response.data);
