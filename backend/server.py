@@ -140,6 +140,7 @@ def create_user():
         return jsonify({"error": str(e)}), 500
      
 @app.route("/users/<int:user_id>", methods = ["PUT"])
+@jwt_required()
 @cross_origin()
 def update_user(user_id):
     all_users = users_collection.find()
@@ -152,6 +153,7 @@ def update_user(user_id):
         return jsonify({"error": "User not found"}), 404
 
 @app.route("/users/<int:user_id>/add_book", methods=["PUT"])
+@jwt_required()
 @cross_origin()
 def add_book_to_user(user_id):
     try:
@@ -178,12 +180,14 @@ def add_book_to_user(user_id):
 
 #cards
 @app.route("/cards", methods = ["GET"])
+@jwt_required()
 @cross_origin()
 def get_all_cards():
     all_cards = cards_collection.find()
     return jsonify({"cards":[i for i in all_cards]})
 
 @app.route("/cards/<int:card_id>", methods = ["GET"])
+@jwt_required()
 @cross_origin()
 def get_card(card_id):
     all_cards = cards_collection.find()
@@ -194,6 +198,7 @@ def get_card(card_id):
         return jsonify({"error": "Card not found"}), 404
 
 @app.route("/cards", methods = ["POST"])
+@jwt_required()
 @cross_origin()
 def create_card():
     try:
@@ -214,6 +219,7 @@ def create_card():
         return jsonify({"error": str(e)}), 500
      
 @app.route("/cards/<int:card_id>", methods = ["PUT"])
+@jwt_required()
 @cross_origin()
 def update_card(card_id):
     all_cards = cards_collection.find()
@@ -226,6 +232,7 @@ def update_card(card_id):
         return jsonify({"error": "Card not found"}), 404
     
 @app.route("/cards/<int:card_id>", methods = ["DELETE"])
+@jwt_required()
 @cross_origin()
 def delete_card(card_id):
     all_cards = cards_collection.find()
@@ -254,6 +261,7 @@ def get_book(book_id):
         return jsonify({"error": "Book not found"}), 404
      
 @app.route("/books", methods = ["POST"])
+@jwt_required()
 @cross_origin()
 def create_book():
     try:
@@ -277,6 +285,7 @@ def create_book():
         return jsonify({"error": str(e)}), 500
      
 @app.route("/books/<int:book_id>", methods = ["PUT"])
+@jwt_required()
 @cross_origin()
 def update_book(book_id):
     all_books = books_collection.find()
@@ -289,6 +298,7 @@ def update_book(book_id):
         return jsonify({"error": "book not found"}), 404
 
 @app.route("/books/<int:book_id>",methods=["DELETE"])
+@jwt_required()
 @cross_origin()
 def delete_book(book_id):
     all_books = books_collection.find()
