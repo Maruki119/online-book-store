@@ -60,6 +60,7 @@ def create_token():
     return jsonify(response)
 
 @app.route('/logout', methods = ["POST"])
+@jwt_required()
 @cross_origin()
 def logout():
     response = jsonify({"msg": "logout successful"})
