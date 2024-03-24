@@ -25,47 +25,20 @@ function ShowMore_Product(){
                 </a>
             </div>
             <div className="product_Category-Container">
-                <div className="product-item">
-                    <ul>
-                    {books.length > 0 && books.find(book => book._id === 1) && (
-                        <div>
-                            <img className="book-image" src={books.find(book => book._id === 1).image} alt={books.title} />
-                            <h2>{books.find(book => book._id === 1).title}</h2>
-                            <p>ผู้เขียน: {books.find(book => book._id === 1).author}</p>
-                            <p>หมวดหมู่: {books.find(book => book._id === 1).category}</p>
-                            <p>ราคา: {books.find(book => book._id === 1).price} บาท</p>
+                {books.filter(book => book.category === "Action").map(filteredBook => (
+                        <div className="product-item">
+                            <ul>
+                                <div key={filteredBook._id}>
+                                    <img className="book-image" src={filteredBook.image} alt={filteredBook.title} />
+                                    <h2>{filteredBook.title}</h2>
+                                    <p>ผู้เขียน: {filteredBook.author}</p>
+                                    <p>หมวดหมู่: {filteredBook.category}</p>
+                                    <p>ราคา: {filteredBook.price} บาท</p>
+                                </div>
+                            </ul>
                         </div>
-                    )}
-                    </ul>
-                </div>
-                <div className="product-item">
-                    <ul>
-                    {books.length > 0 && books.find(book => book._id === 2) && (
-                        <div>
-                            <img className="book-image" src={books.find(book => book._id === 2).image} alt={books.title} />
-                            <h2>{books.find(book => book._id === 2).title}</h2>
-                            <p>ผู้เขียน: {books.find(book => book._id === 2).author}</p>
-                            <p>หมวดหมู่: {books.find(book => book._id === 2).category}</p>
-                            <p>ราคา: {books.find(book => book._id === 2).price} บาท</p>
-                        </div>
-                    )}
-                    </ul>
-                </div> 
-                <div className="product-item">
-                    <ul>
-                    {books.length > 0 && books.find(book => book._id === 3) && (
-                        <div>
-                            <img className="book-image" src={books.find(book => book._id === 3).image} alt={books.title} />
-                            <h2>{books.find(book => book._id === 3).title}</h2>
-                            <p>ผู้เขียน: {books.find(book => book._id === 3).author}</p>
-                            <p>หมวดหมู่: {books.find(book => book._id === 3).category}</p>
-                            <p>ราคา: {books.find(book => book._id === 3).price} บาท</p>
-                        </div>
-                    )}
-                    </ul>
-                </div>     
+                    ))}
             </div>
-
         </div>
 
     );

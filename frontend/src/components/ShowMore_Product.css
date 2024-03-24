@@ -45,8 +45,9 @@ a{
     height: 386px;
     border-radius: 10px;
     background-color: #ADBC9F;
-    margin: 10px;
-    margin-left: 10px;
+    margin-top: 10px;
+    margin-right: 30px;
+    margin-left: 42px;
 }
 
 .book-image{
@@ -60,12 +61,12 @@ a{
     border-radius: 10px;
 }
 
-h2{
+.product-item h2{
     font-size: 18px;
     padding: 5px;
 }
 
-p{
+.product-item p{
     font-size: 12px;
     padding: 5px;
 }

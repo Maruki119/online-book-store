@@ -1,9 +1,42 @@
 import React, { useState, useEffect,  } from "react";
 import axios from "axios";
-import './LoginLaeo.css'
+import './Navbar_Login.css'
 import './profileView.css'
+import ListCartoon from "./ListCartoon";
 
 function LoginLaeo(props){
+
+  const lisCartoons = [
+    {
+        title: "เลือกหมวด",
+        submenu: [{title: "การ์ตูน",
+                submenu: [{
+                        title: "การ์ตูนแอคชั่น",
+                    },
+                    {
+                        title: "การ์ตูนตลก",
+                    },{
+                        title: "การ์ตูนโรแมนซ์",
+                    },{
+                        title: "การ์ตูนกีฬา",
+                    },{
+                        title: "การ์ตูนไซไฟ",
+                    },
+                ],
+            },
+            {
+                title: "นิยาย",
+                submenu: [{
+                    title: "นิยายไซไฟ",
+                },
+                {
+                    title: "นิยายสืบสวน",
+                },
+            ],
+            },
+        ],
+    }
+    ];
     
     const [profileData, setProfileData] = useState(null)
     const [isOpenDropdown,setIsOpenDropdown] = useState(false)
@@ -56,12 +89,21 @@ function LoginLaeo(props){
                 <div className="logo">
                     <img className='App-logo' src = '/images/Khaoklong.png'></img>
                 </div>
-                <div className="menu">
-                    <img className='App-menu' src = '/images/menu-burger.png'></img>
-                </div>
-            
-                <h1>เลือกหมวด</h1>
-                <h1></h1>
+                <nav className="nav">
+                    <ul className="menus">
+                        <img className='menu-logo' src = '/images/menu-burger.png'></img>
+                        {lisCartoons.map((menu, index) => {
+                            const depthLevel = 0;
+                            return (
+                                <ListCartoon className = "List"
+                                    items={menu}
+                                    key={index}
+                                    depthLevel={depthLevel}
+                                />
+                            );
+                        })}
+                    </ul>
+                </nav>
                 <div className="App-search">
                     <input
                         className='serch-input'
@@ -118,14 +160,6 @@ function LoginLaeo(props){
                           </div>
                         )}
                     </button>
-
-                    {/* {profileData && (
-                        <div className="profileData">
-                            <p>User: {profileData.user}</p>
-                            <p>Email: {profileData.email}</p>
-                            <p>Fullname: {profileData.fullname}</p>
-                        </div>
-                    )} */}
                 </div>
             </div>
         </div>
