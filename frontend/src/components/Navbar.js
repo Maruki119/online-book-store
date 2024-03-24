@@ -3,15 +3,43 @@ import './Navbar.css'
 import LoginForm from "./login";
 import SignUp from './sign_up';
 import ListCartoon from "./ListCartoon";
-import { lisCartoons } from "./listCartoons";
 
 
 function Navbar(props)
 {
-    const Menu1 = ['นิยาย','การ์ตูน']
+    const lisCartoons = [
+        {
+            title: "เลือกหมวด",
+            submenu: [{title: "การ์ตูน",
+                    submenu: [{
+                            title: "การ์ตูนแอคชั่น",
+                        },
+                        {
+                            title: "การ์ตูนตลก",
+                        },{
+                            title: "การ์ตูนโรแมนซ์",
+                        },{
+                            title: "การ์ตูนกีฬา",
+                        },{
+                            title: "การ์ตูนไซไฟ",
+                        },
+                    ],
+                },
+                {
+                    title: "นิยาย",
+                    submenu: [{
+                        title: "นิยายไซไฟ",
+                    },
+                    {
+                        title: "นิยายสืบสวน",
+                    },
+                ],
+                },
+            ],
+        }
+        ];
     const [IsOpenSignIn , setIsOpenSignIn] = useState(false);
     const [IsOpenSignup , setIsOpenSignUp] = useState(false);
-    const [OpenMenu1 , setOpenMenu1] = useState(false);
 
     let OpenSignIn = null ;
     let OpenSignUp = null ;
@@ -30,13 +58,13 @@ function Navbar(props)
                 <div className="logo">
                     <img className='App-logo' src = '/images/Khaoklong.png'></img>
                 </div>
-                <nav>
+                <nav className="nav">
                     <ul className="menus">
-                    <img className='App-logo' src = '/images/menu-burger.png'></img>
+                        <img className='menu-logo' src = '/images/menu-burger.png'></img>
                         {lisCartoons.map((menu, index) => {
                             const depthLevel = 0;
                             return (
-                                <ListCartoon
+                                <ListCartoon className = "List"
                                     items={menu}
                                     key={index}
                                     depthLevel={depthLevel}
