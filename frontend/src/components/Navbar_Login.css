@@ -13,7 +13,7 @@
     display: flex;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 40px;  
+    padding-left: 50px;  
     margin-left: 25px; 
 }
 
@@ -62,6 +62,7 @@ input {
     border-radius: 5px;
     font-size: 16px;
 }
+
 .buttonLove{
     display: flex;
     width: 32px;
@@ -72,20 +73,14 @@ input {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    
-    margin-top: 35px;
-    margin-left: 40px;
-  }
-  
-  
-  .buttonLove {
-    opacity: 0.8;
-  }
-  
-  .buttonLove {
     margin-right: 5px;
     vertical-align: middle;
+    opacity: 0.8;
+    
+    margin-top: 37px;
+    margin-left: 90px;
   }
+
   .buttonCart{
     display: flex;
     width: 32px;
@@ -96,37 +91,31 @@ input {
     background-color: transparent;
     border: none;
     cursor: pointer;
+    opacity: 0.8;
+    vertical-align: middle;
     
-    margin-top: 34px;
+    margin-top: 36px;
     margin-left: 40px;
   }
-  .buttonCart {
-    opacity: 0.8;
+
+  .profile{
+    display: flex;
+    width: 250px;
+    align-items: center;
+    margin-right: 30px;
+    background-color: #12372A;
   }
-  
-  .buttonCart {
-    margin-right: 5px;
-    vertical-align: middle;
-  }
+
   .buttonProfile{
     display: flex;
     width: 32px;
     height: 32px;
-
     justify-content: center;
     align-items: center;
     background-color: transparent;
     border: none;
     cursor: pointer;
-    
-    margin-top: 34px;
-    margin-left: 40px;
-  }
-  .buttonProfile {
+    margin: 3px 5px 0px 50px;
     opacity: 0.8;
-  }
-  
-  .buttonProfile {
-    margin-right: 5px;
     vertical-align: middle;
   }
