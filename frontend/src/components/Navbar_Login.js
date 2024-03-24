@@ -140,7 +140,7 @@ function LoginLaeo(props){
                                   src="https://bootdey.com/img/Content/avatar/avatar6.png"
                                   alt="Avatar"
                                 />
-                                <p className="userName">John Doe</p>
+                                <p className="userName">{profileData.user}</p>
                               </div>
                       
                               <div className="items">
