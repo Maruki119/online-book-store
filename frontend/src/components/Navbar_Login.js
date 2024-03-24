@@ -2,6 +2,7 @@ import React, { useState, useEffect,  } from "react";
 import axios from "axios";
 import './Navbar_Login.css'
 import './profileView.css'
+import useToken from './useToken';
 import ListCartoon from "./ListCartoon";
 
 function LoginLaeo(props){
@@ -41,6 +42,7 @@ function LoginLaeo(props){
     const [profileData, setProfileData] = useState(null)
     const [isOpenDropdown,setIsOpenDropdown] = useState(false)
     const [isUsageOpen, setIsUsageOpen] = useState(false);
+    const { token, removeToken, setToken } = useToken();
 
     useEffect(() => {
         getData();
@@ -76,12 +78,17 @@ function LoginLaeo(props){
     
     const toggleDropdown = () => {
         setIsOpenDropdown(!isOpenDropdown);
-    }
+    };
 
     const toggleUsage = () => {
         setIsUsageOpen(!isUsageOpen);
         
-      };
+    };
+
+    const handleLogout = () => {
+        removeToken();
+        window.location.reload();
+    };
 
     return (
         <div className="navbar">
@@ -152,7 +159,7 @@ function LoginLaeo(props){
                                 <div className="item">
                                   <p>ตั้งค่าบัญชี</p>
                                 </div>
-                                <div className="item logout">
+                                <div className="item logout" onClick = {handleLogout}>
                                   <p>ออกจากระบบ</p>
                                 </div>
                               </div>
