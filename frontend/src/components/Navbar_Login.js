@@ -49,11 +49,7 @@ function LoginLaeo(props){
     }, []);
     
     function getData(){
-        axios.get("http://127.0.0.1:5000/profile", {
-            headers: {
-                Authorization: 'Bearer ' + props.token
-            }
-        })
+        axios.get("http://127.0.0.1:5000/profile")
         .then((response) => {
             const res = response.data
             res.access_token && props.setToken(res.access_token)
@@ -155,7 +151,7 @@ function LoginLaeo(props){
                       
                                     <div className="items">
                                             <div className="item">
-                                                <p><span role="img" aria-label="coin">💰</span> ยอดเงินคงเหลือ</p>
+                                                <p><span role="img" aria-label="coin">💰</span> {profileData.balance}</p>
                                             </div>
                                         <div className="item" onClick={toggleUsage}>
                                             <p>การใช้งาน</p>
