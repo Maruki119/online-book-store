@@ -39,6 +39,69 @@ function ShowMore_Product(){
                         </div>
                     ))}
             </div>
+            <div className="Category-Container">
+                <button className="Category">หมวด  คอมเมดี้</button>
+                <a className="Category-Link" href="#">
+                    ดูทั้งหมด
+                </a>
+            </div>
+            <div className="product_Category-Container">
+                {books.filter(book => book.category === "Comedy").map(filteredBook => (
+                        <div className="product-item">
+                            <ul>
+                                <div key={filteredBook._id}>
+                                    <img className="book-image" src={filteredBook.image} alt={filteredBook.title} />
+                                    <h2>{filteredBook.title}</h2>
+                                    <p>ผู้เขียน: {filteredBook.author}</p>
+                                    <p>หมวดหมู่: {filteredBook.category}</p>
+                                    <p>ราคา: {filteredBook.price} บาท</p>
+                                </div>
+                            </ul>
+                        </div>
+                    ))}
+            </div>
+            <div className="Category-Container">
+                <button className="Category">หมวด  โรแมนติก</button>
+                <a className="Category-Link" href="#">
+                    ดูทั้งหมด
+                </a>
+            </div>
+            <div className="product_Category-Container">
+                {books.filter(book => book.category === "Romantic").map(filteredBook => (
+                        <div className="product-item">
+                            <ul>
+                                <div key={filteredBook._id}>
+                                    <img className="book-image" src={filteredBook.image} alt={filteredBook.title} />
+                                    <h2>{filteredBook.title}</h2>
+                                    <p>ผู้เขียน: {filteredBook.author}</p>
+                                    <p>หมวดหมู่: {filteredBook.category}</p>
+                                    <p>ราคา: {filteredBook.price} บาท</p>
+                                </div>
+                            </ul>
+                        </div>
+                    ))}
+            </div>
+            <div className="Category-Container">
+                <button className="Category">หมวด  นิยายไซ-ไฟ</button>
+                <a className="Category-Link" href="#">
+                    ดูทั้งหมด
+                </a>
+            </div>
+            <div className="product_Category-Container">
+                {books.filter(book => book.category === "Sci fi Novels").map(filteredBook => (
+                        <div className="product-item">
+                            <ul>
+                                <div key={filteredBook._id}>
+                                    <img className="book-image" src={filteredBook.image} alt={filteredBook.title} />
+                                    <h2>{filteredBook.title}</h2>
+                                    <p>ผู้เขียน: {filteredBook.author}</p>
+                                    <p>หมวดหมู่: {filteredBook.category}</p>
+                                    <p>ราคา: {filteredBook.price} บาท</p>
+                                </div>
+                            </ul>
+                        </div>
+                    ))}
+            </div>
         </div>
 
     );

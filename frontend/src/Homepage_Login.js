@@ -3,6 +3,7 @@ import Profile from "./components/Navbar_Login";
 import Promote from "./components/Promote"
 import ShowMore_Product from "./components/ShowMore_Product";
 import useToken from './components/useToken'
+import Footer from "./components/Footer";
 
 function HomePage_Login()
 {
@@ -13,6 +14,7 @@ function HomePage_Login()
             <Profile token={token} removeToken = {removeToken} setToken={setToken}/>
             <Promote/>
             <ShowMore_Product/>
+            <Footer/>
         </div>
 
     );
