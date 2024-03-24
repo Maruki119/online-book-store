@@ -85,9 +85,19 @@ function LoginLaeo(props){
         
     };
 
-    const handleLogout = () => {
-        removeToken();
-        window.location.reload();
+    function handleLogout(){
+        axios.post("http://127.0.0.1:5000/logout")
+        .then((response) => {
+            removeToken();
+            console.log(response.data);
+            window.location.reload();
+        }).catch ((error) => {
+            if(error.response){
+            console.log(error.response)
+            console.log(error.response.status)
+            console.log(error.response.headers)
+            }
+        })
     };
 
     return (
