@@ -49,7 +49,11 @@ function LoginLaeo(props){
     }, []);
     
     function getData(){
-        axios.get("http://127.0.0.1:5000/profile")
+        axios.get("http://127.0.0.1:5000/profile", {
+            headers: {
+                Authorization: 'Bearer ' + props.token
+            }
+        })
         .then((response) => {
             const res = response.data
             res.access_token && props.setToken(res.access_token)
