@@ -90,10 +90,6 @@ function Navbar(props)
                         {OpenSignUp}
                 </div>
             </div>
-
-            <div className="List_container">
-
-            </div>
         </div>
     );
 
