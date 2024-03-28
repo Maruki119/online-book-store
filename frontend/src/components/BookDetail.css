@@ -1,0 +1,59 @@
+
+.book-detail-container {
+  max-height: 300px; /* Set a max height for the container */
+  overflow-y: auto; /* Add a vertical scrollbar if needed */
+}
+
+/* Style for the BookDetail component */
+.book-detail {
+  display: flex;
+  margin-bottom: 20px;
+}
+.book-item {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .book-image {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+  
+  .book-info {
+    flex-grow: 1;
+  }
+  
+  .book-title {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+  }
+  
+  .book-author {
+    color: #666;
+    margin-bottom: 5px;
+  }
+  
+  .book-price {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+  }
+  
+  .book-description {
+    margin-bottom: 10px;
+  }
+  
+  .delete-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .delete-button:hover {
+    background-color: #d32f2f;
+  }
+  
