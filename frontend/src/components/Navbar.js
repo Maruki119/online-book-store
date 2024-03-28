@@ -45,11 +45,11 @@ function Navbar(props)
     let OpenSignUp = null ;
 
     if(IsOpenSignup){
-        OpenSignUp = <SignUp onCloseSignUp = {() => setIsOpenSignUp(false) }/>
+        OpenSignUp = <SignUp onCloseSignUp = {() => setIsOpenSignUp(false)} onOpenSignIn = {() => setIsOpenSignIn(true)}/>
     }
 
     if(IsOpenSignIn){
-        OpenSignIn = <LoginForm setToken={props.setToken} onCloseSignIn = {() => setIsOpenSignIn(false) }/>
+        OpenSignIn = <LoginForm setToken={props.setToken} onCloseSignIn = {() => setIsOpenSignIn(false)} onOpenSignUp = {() => setIsOpenSignUp(true)}/>
     }
 
     function handleClick(event){
@@ -80,8 +80,8 @@ function Navbar(props)
                         })}
                     </ul>
                 </nav>
-                <div className="App-search">
-                <form onSubmit={handleClick} className="App-search">
+                <div className="App-Search">
+                <form onSubmit={handleClick} className="App-Search">
                         <input
                             className='serch-input'
                             type='text'

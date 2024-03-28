@@ -45,6 +45,11 @@ const LoginForm = (props) => {
     }));
   }
 
+  function handleChangeStage(){
+    props.onCloseSignIn();
+    props.onOpenSignUp();
+  }
+
   return (
     <div className="SignIn">
       <div className="Full-BG">
@@ -86,7 +91,7 @@ const LoginForm = (props) => {
         </form>
 
           <p className="Text-Reg">สมัครสมาชิกข้าวกล่อง e-book ด้วยอีเมล
-            <a className="SignIn-Link" href="/signup">
+            <a className="SignIn-Link" onClick={handleChangeStage}>
               สมัครสมาชิก
             </a>
           </p>
