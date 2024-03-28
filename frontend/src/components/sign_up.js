@@ -42,6 +42,7 @@ function SignUp(props) {
       .then((response) => {
         setUser(response.data);
         setMessage("Sign-Up Successfully");
+        console.log(message)
         alert("Sign-Up Successfully!");
         window.location.reload();
       })
@@ -50,9 +51,15 @@ function SignUp(props) {
         setMessage(
           error.response.data.message || "An error occurred while adding the product."
         );
+        console.log(message)
         alert("Your Username or E-mail has been used!");
       });
   };
+
+  function handleChangeStage(){
+    props.onCloseSignUp();
+    props.onOpenSignIn();
+  }
 
   return (
     <div className="SignUp">
@@ -116,7 +123,7 @@ function SignUp(props) {
 
           <p className="Text-Reg">
             ฉันมีบัญชีข้าวกล่อง E-book อยู่แล้ว
-            <a className="SignIn-Link" href="#">
+            <a className="SignIn-Link" onClick={handleChangeStage}>
               เข้าสู่ระบบ
             </a>
           </p>
