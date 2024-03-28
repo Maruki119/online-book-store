@@ -10,8 +10,7 @@ function Detail_Product_login_ID(){
     const { bookId } = useParams();
   
     useEffect(() => {
-        axios
-            .get(`http://127.0.0.1:5000/books/${bookId}`)
+        axios.get(`http://127.0.0.1:5000/books/${bookId}`)
             .then((response) => {
                 setSelectedBook(response.data);
             })

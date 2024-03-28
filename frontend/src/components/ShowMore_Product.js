@@ -18,15 +18,28 @@ function ShowMore_Product({login}) {
   }, []);
 
   // Function to generate category containers
-  const renderCategory = (categoryTitle, book) => {
-    return (
-      <div className="Category-Container">
-        <button className="Category">{categoryTitle}</button>
-        <a className="Category-Link" href="#">
-          ดูทั้งหมด
-        </a>
-      </div>
-    );
+  const renderCategory = (category) => {
+    if(login){
+      return (
+        <div className="Category-Container">
+          <button className="Category">{category}</button>
+          <Link to={`/detail/${category}`} className="Category-link">
+            <a className="Category-Link" href="#">
+              ดูทั้งหมด
+            </a>
+          </Link>
+        </div>
+      );
+    }else{
+      return (
+        <div className="Category-Container">
+          <button className="Category">{category}</button>
+          <a className="Category-Link" href="#">
+            ดูทั้งหมด
+          </a>
+        </div>
+      );
+    }
   };
 
   // Function to render individual book items
@@ -60,28 +73,28 @@ function ShowMore_Product({login}) {
 
   return (
     <div className="Product-Container">
-      {renderCategory("หมวด  แอ็คชั่น")}
+      {renderCategory("Action")}
       <div className="product_Category-Container">
         {books.filter(book => book.category === "Action").map(filteredBook => (
           renderBookItem(filteredBook)
         ))}
       </div>
 
-      {renderCategory("หมวด  คอมเมดี้")}
+      {renderCategory("Comedy")}
       <div className="product_Category-Container">
         {books.filter(book => book.category === "Comedy").map(filteredBook => (
           renderBookItem(filteredBook)
         ))}
       </div>
 
-      {renderCategory("หมวด  โรแมนติก")}
+      {renderCategory("Romantic")}
       <div className="product_Category-Container">
         {books.filter(book => book.category === "Romantic").map(filteredBook => (
           renderBookItem(filteredBook)
         ))}
       </div>
 
-      {renderCategory("หมวด  นิยายไซ-ไฟ")}
+      {renderCategory("Sci fi Novels")}
       <div className="product_Category-Container">
         {books.filter(book => book.category === "Sci fi Novels").map(filteredBook => (
           renderBookItem(filteredBook)
