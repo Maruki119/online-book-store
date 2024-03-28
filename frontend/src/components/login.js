@@ -92,7 +92,7 @@ const LoginForm = (props) => {
 
           <p className="Text-Reg">สมัครสมาชิกข้าวกล่อง e-book ด้วยอีเมล
             <a className="SignIn-Link" onClick={handleChangeStage}>
-              สมัครสมาชิก
+              <span><a href="#">สมัครสมาชิก</a></span>
             </a>
           </p>
         </div>

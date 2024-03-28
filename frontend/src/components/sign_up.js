@@ -124,7 +124,7 @@ function SignUp(props) {
           <p className="Text-Reg">
             ฉันมีบัญชีข้าวกล่อง E-book อยู่แล้ว
             <a className="SignIn-Link" onClick={handleChangeStage}>
-              เข้าสู่ระบบ
+              <span><a href="#">เข้าสู่ระบบ</a></span>
             </a>
           </p>
         </div>
