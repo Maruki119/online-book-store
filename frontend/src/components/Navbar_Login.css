@@ -45,10 +45,10 @@ h1 {
 }
 
 .App-search {
-    width: 750px;
+    width: 650px;
     display: flex;
     align-items: center;
-    margin-top: 15px;
+    margin-top: 7px;
     padding: 35px;
 }
 
