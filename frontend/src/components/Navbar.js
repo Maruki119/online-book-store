@@ -81,7 +81,7 @@ function Navbar(props)
                     </ul>
                 </nav>
                 <div className="App-search">
-                <form onSubmit={handleClick}>
+                <form onSubmit={handleClick} className="App-search">
                         <input
                             className='serch-input'
                             type='text'
