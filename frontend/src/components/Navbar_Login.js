@@ -118,10 +118,6 @@ function LoginLaeo(props){
         setIsOpenDropdown(!isOpenDropdown);
     };
 
-    const toggleUsage = () => {
-        setIsUsageOpen(!isUsageOpen);
-        
-    };
 
     return (
         <div className="navbar">
@@ -172,7 +168,7 @@ function LoginLaeo(props){
                     </Link>
                 </div>
                 <div className="profile">
-                    <button className="buttonProfile" onDoubleClick = {toggleDropdown}>
+                    <button className="buttonProfile" onClick = {toggleDropdown}>
                         <img src='/images/profile.png' alt="Profile" />
                         {isOpenDropdown && (
                             <div className="frame">
@@ -190,15 +186,11 @@ function LoginLaeo(props){
                                             <div className="item">
                                                 <p><span role="img" aria-label="coin">💰</span> {profileData.balance}</p>
                                             </div>
-                                        <div className="item" onClick={toggleUsage}>
-                                            <p>การใช้งาน</p>
-                                            {isUsageOpen && (
-                                            <ul className="submenu">
-                                                <li>ชั้นหนังสือ</li>
-                                                <li>ประวัติการซื้อ</li>
-                                            </ul>
-                                            )}
-                                        </div>
+                                        <Link to="/libary">
+                                            <div className="item">
+                                                <span> ชั้นหนังสือ</span>
+                                            </div>
+                                        </Link>
                                         <div className="item">
                                             <p>ตั้งค่าบัญชี</p>
                                         </div>
