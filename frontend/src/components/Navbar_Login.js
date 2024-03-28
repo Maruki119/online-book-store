@@ -11,7 +11,12 @@ function LoginLaeo(props){
   const lisCartoons = [
     {
         title: "เลือกหมวด",
-        submenu: [{title: "การ์ตูน",
+        
+        submenu: [
+            
+            {title: "ทั้งหมด" 
+            },
+            {title: "การ์ตูน",
                 submenu: [{
                         title: "การ์ตูนแอคชั่น",
                     },
