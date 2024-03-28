@@ -1,4 +1,5 @@
 import React, { useState , useEffect } from "react";
+import { Link } from "react-router-dom";
 import './forgetpassword.css'
 
 const Forgetpassword = (props) => {
@@ -31,7 +32,9 @@ const Forgetpassword = (props) => {
             />
               <p className="forget-options">ระบบจะทำการส่งลิงก์คำขอเพื่อตั้งรหัสผ่านใหม่ให้คุณผ่านทางอีเมล </p>
               <div class="button-container">
-                <button type="submit" className="forget-button">ยกเลิก</button>
+                <Link to = {"/"}>
+                  <button type="submit" className="forget-button">ยกเลิก</button>
+                </Link>
                 <button type="button" className="forget-button2">ตกลง</button>
               </div>
             </div>

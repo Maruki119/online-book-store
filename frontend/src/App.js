@@ -6,6 +6,7 @@ import useToken from './components/useToken'
 import SignUp from "./components/sign_up";
 import HomePage_Login from "./Homepage_Login";
 import Checkout_page from "./Checkout";
+import Forgetpassword from "./components/forgetpassword";
 import Detail_Product_login_ID from "./components/Detail_Product_login_ID";
 import Detail_Product_login_Category from "./components/Detail_Product_login_Category";
 
@@ -16,7 +17,12 @@ function App() {
     <BrowserRouter>
       <div className="App">
         {!token && token !== "" && token !== undefined? (
-          <HomePage setToken={setToken}/>
+          <>
+            <Routes>
+              <Route exact path = "/" element = {<HomePage setToken={setToken}/>}/>
+              <Route exact path = "/forgetpassword" element = {<Forgetpassword/>}></Route>
+            </Routes>
+          </>
         ): (
           <>
             <Routes>

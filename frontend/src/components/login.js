@@ -1,5 +1,6 @@
 import React, { useState , useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import './Sign-Up.css'
 
 const LoginForm = (props) => {
@@ -9,6 +10,7 @@ const LoginForm = (props) => {
   })
 
   function handleSubmit(event) {
+    event.preventDefault();
     if (loginForm.email.trim() === "" || loginForm.password.trim() === "") {
       alert("กรุณากรอกทั้งอีเมลและรหัสผ่าน!");
       return;
@@ -30,17 +32,18 @@ const LoginForm = (props) => {
     });
   
     setloginForm({
+      ...loginForm,
       password: ""
     });
-  
-    event.preventDefault();
   }
 
-  function handleChange(event) { 
-    const {value, name} = event.target
-    setloginForm(prevNote => ({
-        ...prevNote, [name]: value})
-    )}
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setloginForm(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  }
 
   return (
     <div className="SignIn">
@@ -50,7 +53,7 @@ const LoginForm = (props) => {
           <img className="Logo" src="/images/Khaoklong.png" alt="Login Logo" />
           <h2 className="SignIn-Title">ยินดีต้อนรับ เข้าสู่ระบบ!</h2>
           <p className="SignIn-SubTitle">หากมีบัญชีแล้ว สามารถเข้าสู่ระบบด้วยบัญชีเดิมได้เลย</p>
-
+        <form>
           <input className="TextBox-Email"
             type="email"
             text={loginForm.email} 
@@ -70,7 +73,9 @@ const LoginForm = (props) => {
           />
 
           <p className="Text-Forget">
-            <u>ลืมรหัสผ่าน</u>
+            <Link to = {"/forgetpassword"}>
+              <u>ลืมรหัสผ่าน</u>
+            </Link>
           </p>
 
           <button className="Button"
@@ -78,6 +83,7 @@ const LoginForm = (props) => {
             onClick={handleSubmit}>
             เข้าสู่ระบบ
           </button>
+        </form>
 
           <p className="Text-Reg">สมัครสมาชิกข้าวกล่อง e-book ด้วยอีเมล
             <a className="SignIn-Link" href="/signup">
