@@ -52,6 +52,11 @@ function Navbar(props)
         OpenSignIn = <LoginForm setToken={props.setToken} onCloseSignIn = {() => setIsOpenSignIn(false) }/>
     }
 
+    function handleClick(event){
+        event.preventDefault();
+        setIsOpenSignIn(true);
+    };
+
     return (
         <div className="navbar">
             <div className="nav_container">
@@ -74,11 +79,13 @@ function Navbar(props)
                     </ul>
                 </nav>
                 <div className="App-search">
-                    <input
-                        className='serch-input'
-                        type='text'
-                        placeholder="วันนี้อ่านอะไรดีจ้ะ?" 
-                    />
+                <form onSubmit={handleClick}>
+                        <input
+                            className='serch-input'
+                            type='text'
+                            placeholder="วันนี้อ่านอะไรดีจ้ะ?" 
+                        />
+                    </form>
                 </div>
                 <div className = "Sign-in">
                         <button className="sign-in-button" onClick={() => setIsOpenSignIn(true)}>เข้าสู่ระบบ</button>

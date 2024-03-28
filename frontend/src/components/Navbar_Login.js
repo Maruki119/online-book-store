@@ -43,6 +43,7 @@ function LoginLaeo(props){
     const [isOpenDropdown,setIsOpenDropdown] = useState(false)
     const [isUsageOpen, setIsUsageOpen] = useState(false);
     const { token, removeToken, setToken } = useToken();
+    const [search, setSearch] = useState();
 
     useEffect(() => {
         getData();
@@ -75,15 +76,6 @@ function LoginLaeo(props){
             }
         })
     }
-    
-    const toggleDropdown = () => {
-        setIsOpenDropdown(!isOpenDropdown);
-    };
-
-    const toggleUsage = () => {
-        setIsUsageOpen(!isUsageOpen);
-        
-    };
 
     function handleLogout(){
         axios.post("http://127.0.0.1:5000/logout")
@@ -98,6 +90,34 @@ function LoginLaeo(props){
             console.log(error.response.headers)
             }
         })
+    };
+
+    function handleSearch(event){
+        event.preventDefault();
+        axios.get("http://127.0.0.1:5000/search", {
+            params: {
+                title: search
+            }
+        })
+        .then((response) => {
+            console.log("Search Results: ", response.data);
+        }).catch((error) => {
+            console.error("Search Error: ", error);
+        });
+    }
+
+    function handleSearchInput(event){
+        setSearch(event.target.value);
+    }
+
+
+    const toggleDropdown = () => {
+        setIsOpenDropdown(!isOpenDropdown);
+    };
+
+    const toggleUsage = () => {
+        setIsUsageOpen(!isUsageOpen);
+        
     };
 
     return (
@@ -122,11 +142,15 @@ function LoginLaeo(props){
                     </ul>
                 </nav>
                 <div className="App-search">
-                    <input
-                        className='serch-input'
-                        type='text'
-                        placeholder="วันนี้อ่านอะไรดีจ้ะ?" 
-                    />
+                    <form onSubmit={handleSearch}>
+                        <input
+                            className='serch-input'
+                            type='text'
+                            placeholder="วันนี้อ่านอะไรดีจ้ะ?" 
+                            value={search}
+                            onChange={handleSearchInput}
+                        />
+                    </form>
                 </div>
                 <div className="love"> 
                 <button className="buttonLove">

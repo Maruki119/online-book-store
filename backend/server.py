@@ -66,7 +66,7 @@ def logout():
     unset_jwt_cookies(response)
     return response
  
-@app.route('/profile')
+@app.route('/profile', methods = ["GET"])
 @jwt_required()
 @cross_origin()
 def my_profile():
@@ -88,6 +88,24 @@ def my_profile():
     
     return jsonify(response_body)
 
+@app.route('/search', methods = ["GET"])
+@cross_origin()
+def search():
+    title = request.args.get('title', '')
+    if not title:
+        return jsonify({"error": "Please provide a 'title' parameter in the query."}), 400
+
+    search_result = list(books_collection.find({"title": {"$regex": title, "$options": "i"}}))
+    if not search_result:
+        return jsonify({"message": "No books found with the provided title query."}), 404
+    
+    response = {
+        "message": "Books found with the provided title query.",
+        "results": search_result
+    }
+    
+    return jsonify(response), 200
+    
 #greeting api
 @app.route('/')
 def Greet():
