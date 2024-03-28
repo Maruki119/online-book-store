@@ -51,13 +51,13 @@
     padding-right: 5px;
 }
 
-.App-search{
-    width: 750px;
+.App-Search{
+    width: 650px;
     display: flex;
     align-items: center;
     padding: 35px;
-    margin-top: 15px;
-    margin-left: 40px;
+    margin-top: 5px;
+    margin-left: 15px;
 }
 
 input {
