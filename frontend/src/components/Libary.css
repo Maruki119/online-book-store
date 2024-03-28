@@ -1,0 +1,57 @@
+.libary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.text1-libary{
+    width: 90%;
+    font-size: small;
+    margin-top: 150px;
+    align-items: center;
+    margin-left: 90px;
+    margin-bottom: 15px;
+}
+
+.LibaryInfoBook {
+    display: flex;
+    flex-wrap: wrap; /* Allow books to wrap onto new lines */
+    justify-content: center; /* Center items horizontally */
+    width: 80%;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.bookImageLibary {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.book-imageLB {
+    width: 106px;
+    height: 133px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.book-containerLB {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #ccc;
+}
+.boxLB {
+    width: calc(20% - 20px); 
+    margin-right: 20px; 
+    margin-bottom: 20px; 
+}
+.book-infoLB {
+    font-size: 10px;
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Display ellipsis for overflow text */
+    overflow-wrap: break-word; /* Break word if it's too long */
+    white-space: pre-wrap; /* Allow text to wrap onto multiple lines */
+}
