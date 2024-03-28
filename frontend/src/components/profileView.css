@@ -1,66 +1,69 @@
 .frame {
-    display: inline-grid;
-    border: 2px solid #12372A; /* Dark green border */
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  }
-  
-  .container {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .header {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-  }
-  
-  .userName {
-    margin-top: 10px;
-    font-size: 18px;
-  }
-  
-  .items {
-    width: 300px;
-  }
-  
-  .item {
-    cursor: pointer;
-    border-bottom: 1px solid #ccc;
-    padding: 10px;
-  }
-  
-  .item:last-child {
-    border-bottom: none;
-  }
-  
-  .submenu {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .submenu li {
-    padding: 5px 20px;
-    cursor: pointer;
-  }
-  
-  .submenu li:hover {
-    background-color: #FBFADA; /* Light yellow background on hover */
-  }
-  
-  .logout {
-    color: #FF6347; /* Red text color */
-    text-decoration: underline;
-  }
+  display: flex;
+  border: 2px solid #12372A;
+  border-radius: 10px;
+  background-color: #FBFADA;
+  padding: 45px 170px 0px 170px;
+  margin-left: -250px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  justify-content: center;
+}
+
+.container {
+  font-family: Arial, sans-serif;
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  margin-bottom: 20px;
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.userName {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.items {
+  width: 300px;
+}
+
+.item {
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.submenu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.submenu li {
+  padding: 5px 20px;
+  cursor: pointer;
+}
+
+.submenu li:hover {
+  background-color: #FBFADA;
+}
+
+.logout {
+  color: #FF6347;
+  text-decoration: underline;
+}
