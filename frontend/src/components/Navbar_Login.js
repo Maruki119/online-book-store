@@ -154,7 +154,7 @@ function LoginLaeo(props){
                 </div>
                 <div className="love"> 
                 <button className="buttonLove">
-                        <img src="images/heart.png" alt="Love" />
+                        <img src="/images/heart.png" alt="Love" />
                  </button>
                 </div>
                 <div className="basket"> 

@@ -4,7 +4,7 @@ function Promote() {
     return (
         <div className="Promote-container">
             <div className="slider-container">
-                <img className="Promote1" src ="./images/Welcome.png"/>
+                <img className="Promote1" src ="/images/Welcome.png"/>
             </div>
         </div>
     );

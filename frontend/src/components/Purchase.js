@@ -134,7 +134,7 @@ const PurchasePage = () => {
             />
           </div>
         )}
-        <p>Total Price: {totalPrice.toFixed(2)} $</p>
+        <p>Total Price: {totalPrice.toFixed(2)} ฿</p>
         <div className="purchase-button-container">
           <button onClick={handleClick} disabled={isProcessing} className="purchase-button">
             {isProcessing ? 'Processing...' : 'Purchase'}

@@ -60,7 +60,7 @@ function SignUp(props) {
         <div className="Container">
           <img
             className="Exit-Button"
-            src="./images/cross-small.png"
+            src="/images/cross-small.png"
             onClick={props.onCloseSignUp}
           />
           <img className="Logo" src="/images/Khaoklong.png" alt="Login Logo" />

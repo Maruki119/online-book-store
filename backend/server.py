@@ -268,6 +268,12 @@ def get_all_books():
     all_books = books_collection.find()
     return jsonify({"books":[i for i in all_books]})
 
+@app.route("/books/<string:category>", methods = ["GET"])
+@cross_origin()
+def get_book_category(category):
+    all_books = books_collection.find()
+    return jsonify({"books": [i for i in all_books if i["category"] == category]})
+
 @app.route("/books/<int:book_id>", methods = ["GET"])
 @cross_origin()
 def get_book(book_id):

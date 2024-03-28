@@ -46,7 +46,7 @@ const LoginForm = (props) => {
     <div className="SignIn">
       <div className="Full-BG">
         <div className="Container">
-          <img className="Exit-Button" src="./images/cross-small.png" onClick={props.onCloseSignIn} />
+          <img className="Exit-Button" src="/images/cross-small.png" onClick={props.onCloseSignIn} />
           <img className="Logo" src="/images/Khaoklong.png" alt="Login Logo" />
           <h2 className="SignIn-Title">ยินดีต้อนรับ เข้าสู่ระบบ!</h2>
           <p className="SignIn-SubTitle">หากมีบัญชีแล้ว สามารถเข้าสู่ระบบด้วยบัญชีเดิมได้เลย</p>

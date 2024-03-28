@@ -13,7 +13,7 @@ const BookDetail = ({ book, onDelete }) => {
       <div className="book-info">
         <h2 className="book-title">{book.title}</h2>
         <p className="book-author">By {book.author}</p>
-        <p className="book-price">${book.price.toFixed(2)}</p>
+        <p className="book-price">฿{book.price.toFixed(2)}</p>
         <p className="book-description">{book.description}</p>
         <button className="delete-button" onClick={handleDelete}>
           Delete
