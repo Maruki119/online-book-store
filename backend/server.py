@@ -143,7 +143,9 @@ def create_user():
             "fullname": "",
             "card_id": "",
             "balance": 0,
-            "book_access": []
+            "book_access": [],
+            "cart": [],
+            "wishlist": []
         }
         
         existing_user = users_collection.find_one({"user": data["user"]})
@@ -171,11 +173,50 @@ def update_user(user_id):
         return jsonify(user), 200
     else:
         return jsonify({"error": "User not found"}), 404
+    
+@app.route("/users/<int:user_id>/book_access", methods=["GET"])
+@jwt_required()
+@cross_origin()
+def get_user_book_access(user_id):
+    user = users_collection.find_one({"_id": user_id})
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+    
+    book_access = user.get("book_access", [])
+    books = list(books_collection.find({"_id": {"$in": book_access}}))
+    
+    return jsonify({"books": books}), 200
+
+@app.route("/users/<int:user_id>/cart", methods=["GET"])
+@jwt_required()
+@cross_origin()
+def get_user_cart(user_id):
+    user = users_collection.find_one({"_id": user_id})
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+    
+    cart = user.get("cart", [])
+    books = list(books_collection.find({"_id": {"$in": cart}}))
+    
+    return jsonify({"books": books}), 200
+
+@app.route("/users/<int:user_id>/wishlist", methods=["GET"])
+@jwt_required()
+@cross_origin()
+def get_user_wishlist(user_id):
+    user = users_collection.find_one({"_id": user_id})
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+    
+    wishlist = user.get("wishlist", [])
+    books= list(books_collection.find({"_id": {"$in": wishlist}}))
+    
+    return jsonify({"books": books}), 200
 
 @app.route("/users/<int:user_id>/add_book", methods=["PUT"])
 @jwt_required()
 @cross_origin()
-def add_book_to_user(user_id):
+def add_book_to_bookAccess(user_id):
     try:
         data = request.get_json()
         book_id = data.get("book_id")
@@ -191,10 +232,70 @@ def add_book_to_user(user_id):
         
         users_collection.update_one(
             {"_id": user_id},
+            {"$pull": {"cart": int(book_id)}}
+        )
+        
+        users_collection.update_one(
+            {"_id": user_id},
             {"$push": {"book_access": int(book_id)}}
         )
 
         return jsonify({"message": "Book added to user's book_access"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
+@app.route("/users/<int:user_id>/add_to_cart", methods=["PUT"])
+@jwt_required()
+@cross_origin()
+def add_book_to_cart(user_id):
+    try:
+        data = request.get_json()
+        book_id = data.get("book_id")
+        if not book_id:
+            return jsonify({"error": "Book ID is required"}), 400
+        
+        user = users_collection.find_one({"_id": user_id})
+        if not user:
+            return jsonify({"error": "User not found"}), 404
+        
+        if int(book_id) in user["cart"]:
+            return jsonify({"message": "Book already in user's cart"}), 200
+        
+        if int(book_id) in user["book_access"]:
+            return jsonify({"message": "Book already in user's book_access"}), 200
+        
+        users_collection.update_one(
+            {"_id": user_id},
+            {"$push": {"cart": int(book_id)}}
+        )
+
+        return jsonify({"message": "Book added to user's cart"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/users/<int:user_id>/add_to_wishlist", methods=["PUT"])
+@jwt_required()
+@cross_origin()
+def add_book_to_wishlist(user_id):
+    try:
+        data = request.get_json()
+        book_id = data.get("book_id")
+        if not book_id:
+            return jsonify({"error": "Book ID is required"}), 400
+        
+        user = users_collection.find_one({"_id": user_id})
+        if not user:
+            return jsonify({"error": "User not found"}), 404
+        
+        if int(book_id) in user["wishlist"]:
+            return jsonify({"message": "Book already in user's wishlist"}), 200
+        
+        users_collection.update_one(
+            {"_id": user_id},
+            {"$push": {"wishlist": int(book_id)}}
+        )
+
+        return jsonify({"message": "Book added to user's wishlist"}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
