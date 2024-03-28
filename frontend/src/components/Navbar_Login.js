@@ -4,6 +4,7 @@ import './Navbar_Login.css'
 import './profileView.css'
 import useToken from './useToken';
 import ListCartoon from "./ListCartoon";
+import { Router , Link} from "react-router-dom";
 
 function LoginLaeo(props){
 
@@ -124,7 +125,9 @@ function LoginLaeo(props){
         <div className="navbar">
             <div className="nav_container">
                 <div className="logo">
-                    <img className='App-logo' src = '/images/Khaoklong.png'></img>
+                    <Link to={"/"}>
+                        <img className='App-logo' src = '/images/Khaoklong.png'></img>
+                    </Link>
                 </div>
                 <nav className="nav">
                     <ul className="menus">
@@ -142,7 +145,7 @@ function LoginLaeo(props){
                     </ul>
                 </nav>
                 <div className="App-search">
-                    <form onSubmit={handleSearch}>
+                    <form onSubmit={handleSearch} className="App-search">
                         <input
                             className='serch-input'
                             type='text'
@@ -158,9 +161,11 @@ function LoginLaeo(props){
                  </button>
                 </div>
                 <div className="basket"> 
+                    <Link to={"/checkout"}>
                     <button className="buttonCart">
                         <img src='/images/cart.png' alt="Cart" />
                     </button>
+                    </Link>
                 </div>
                 <div className="profile">
                     <button className="buttonProfile" onDoubleClick = {toggleDropdown}>

@@ -10,8 +10,8 @@
     width: 145px;
     height: 85px;
     display: flex;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     padding-left: 50px;  
     margin-left: 25px; 
 }
