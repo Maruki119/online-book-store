@@ -9,6 +9,7 @@ import Checkout_page from "./Checkout";
 import Forgetpassword from "./components/forgetpassword";
 import Detail_Product_login_ID from "./components/Detail_Product_login_ID";
 import Detail_Product_login_Category from "./components/Detail_Product_login_Category";
+import WishListPage from "./WishListPage";
 
 function App() {
   const { token, removeToken, setToken } = useToken();
@@ -30,6 +31,7 @@ function App() {
               <Route exact path = "/checkout" element = {<Checkout_page/>}></Route>
               <Route path = "/detail/:category" element = {<Detail_Product_login_Category/>}></Route>
               <Route path = "/detail/:category/:bookId" element = {<Detail_Product_login_ID/>}></Route>
+              <Route exact path = "/wishlist" element = {<WishListPage/>}></Route>
             </Routes>
           </>
         )}

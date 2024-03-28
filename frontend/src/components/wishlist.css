@@ -1,0 +1,56 @@
+.wishlist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.text1-wishlist {
+    width: 90%;
+    font-size: small;
+    margin-top: 150px;
+    align-items: center;
+    margin-left: 90px;
+    margin-bottom: 15px;
+}
+
+.WishlistInfoBook {
+    display: grid; /* Change display to grid */
+    grid-template-columns: 1fr; /* Define a single column */
+    width: 80%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.bookImageWishList {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.book-imageWL {
+    width: 106px;
+    height: 133px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.book-container {
+    display: flex;
+    border-bottom: 1px solid #ccc; /* Add border bottom for separator */
+     /* Add padding to separate the books visually */
+    margin-bottom: 20px; /* Adjust margin to create space between books and separator */
+}
+
+.button-icons {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Move icons to the right */
+    margin-top: 20px; /* Adjust top margin as needed */
+}
+
+.button-icons img {
+    margin-left: 40px;
+    cursor: pointer;
+}
