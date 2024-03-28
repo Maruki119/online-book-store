@@ -156,9 +156,11 @@ function LoginLaeo(props){
                     </form>
                 </div>
                 <div className="love"> 
-                <button className="buttonLove">
+                    <Link to={"/wishlist"}>
+                    <button className="buttonLove">
                         <img src="/images/heart.png" alt="Love" />
-                 </button>
+                    </button>
+                    </Link>
                 </div>
                 <div className="basket"> 
                     <Link to={"/checkout"}>
