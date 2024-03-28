@@ -3,7 +3,7 @@ import axios from "axios";
 import "./ShowMore_Product.css";
 import { Link } from "react-router-dom";
 
-function ShowMore_Product() {
+function ShowMore_Product({login}) {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
@@ -31,9 +31,22 @@ function ShowMore_Product() {
 
   // Function to render individual book items
   const renderBookItem = (book) => {
-    return (
+    if(login){
+      return (
+          <div className="product-item" key={book._id}>
+              <Link to={`/detail/${book.category}/${book._id}`} className="book-link">
+                  <img className="book-image" src={book.image} alt={book.title} />
+                  <h2>{book.title}</h2>
+                  <p>ผู้เขียน: {book.author}</p>
+                  <p>หมวดหมู่: {book.category}</p>
+                  <p>ราคา: {book.price} บาท</p>
+              </Link>
+          </div>
+      );
+    }else{
+      return (
         <div className="product-item" key={book._id}>
-            <Link to={`/detail/${book.category}/${book._id}`} className="book-link">
+            <Link to={`/`} className="book-link">
                 <img className="book-image" src={book.image} alt={book.title} />
                 <h2>{book.title}</h2>
                 <p>ผู้เขียน: {book.author}</p>
@@ -42,6 +55,7 @@ function ShowMore_Product() {
             </Link>
         </div>
     );
+    }
   };
 
   return (

@@ -4,7 +4,7 @@ import './Navbar_Login.css'
 import './profileView.css'
 import useToken from './useToken';
 import ListCartoon from "./ListCartoon";
-import { Router , Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function LoginLaeo(props){
 
@@ -43,7 +43,7 @@ function LoginLaeo(props){
     const [profileData, setProfileData] = useState(null)
     const [isOpenDropdown,setIsOpenDropdown] = useState(false)
     const [isUsageOpen, setIsUsageOpen] = useState(false);
-    const { token, removeToken, setToken } = useToken();
+    const { removeToken } = useToken();
     const [search, setSearch] = useState();
 
     useEffect(() => {
@@ -67,7 +67,9 @@ function LoginLaeo(props){
                 password: res.password,
                 card_id: res.card_id,
                 balance: res.balance,
-                book_access: res.book_access
+                book_access: res.book_access,
+                cart: res.cart,
+                wishlist: res.wishlist
             }))
          }).catch ((error) => {
                 if(error.response){

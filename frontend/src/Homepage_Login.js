@@ -8,12 +8,13 @@ import Footer from "./components/Footer";
 function HomePage_Login()
 {
     const { token, removeToken, setToken } = useToken();
+    let login = true;
 
     return (
         <div className="homepage-contrainer">
             <Profile token={token} removeToken = {removeToken} setToken={setToken}/>
             <Promote/>
-            <ShowMore_Product/>
+            <ShowMore_Product login = {login}/>
             <Footer/>
         </div>
 

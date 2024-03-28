@@ -83,7 +83,9 @@ def my_profile():
         "fullname": user.get("fullname", ""),
         "card_id": user.get("card_id", ""),
         "balance": user.get("balance", ""),
-        "book_access": user.get("book_access", [])
+        "book_access": user.get("book_access", []),
+        "cart": user.get("cart", []),
+        "wishlist": user.get("wishlist", [])
     }
     
     return jsonify(response_body)

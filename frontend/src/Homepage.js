@@ -6,12 +6,13 @@ import Footer from "./components/Footer";
 function HomePage(props)
 {
 
+    let login = false;
 
     return (
         <div className="homepage-contrainer">
             <Navbar setToken={props.setToken}/>
             <Promote/>
-            <ShowMore_Product/>
+            <ShowMore_Product login = {login}/>
             <Footer/>
         </div>
 
