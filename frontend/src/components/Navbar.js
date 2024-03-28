@@ -3,7 +3,7 @@ import './Navbar.css'
 import LoginForm from "./login";
 import SignUp from './sign_up';
 import ListCartoon from "./ListCartoon";
-
+import { Router , Link} from "react-router-dom";
 
 function Navbar(props)
 {
@@ -61,7 +61,9 @@ function Navbar(props)
         <div className="navbar">
             <div className="nav_container">
                 <div className="logo">
-                    <img className='App-logo' src = '/images/Khaoklong.png'></img>
+                    <Link to={"/"}>
+                        <img className='App-logo' src = '/images/Khaoklong.png'></img>
+                    </Link>
                 </div>
                 <nav className="nav">
                     <ul className="menus">
