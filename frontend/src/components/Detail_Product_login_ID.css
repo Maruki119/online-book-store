@@ -78,7 +78,9 @@
 }
 
 .Synopsis{
-    margin-top: 30px;
+    border-top: 3px solid #436850;
+    padding: 25px;
+    margin-top: 80px;
     display: block;
     width: 100% ;
     height: auto

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Profile from "./Navbar_Login";
 import useToken from './useToken';
 import "./Detail_Product_login_ID.css"
+import Footer from "./Footer";
 
 function Detail_Product_login_ID(){
     const [selectedBook, setSelectedBook] = useState(null);
@@ -56,6 +57,7 @@ function Detail_Product_login_ID(){
                     </div>    
                 )}
             </div>
+            <Footer/>
         </div>
     );
 }
