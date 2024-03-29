@@ -246,42 +246,6 @@ def add_book_to_bookAccess(user_id):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
-@app.route("/users/<int:user_id>/remove_from_cart/<int:book_id>", methods=["DELETE"])
-@jwt_required()
-@cross_origin()
-def remove_book_cart(user_id, book_id):
-    user = users_collection.find_one({"_id": user_id})
-    if not user:
-        return jsonify({"error": "User not found"}), 404
-    
-    if book_id not in user["cart"]:
-        return jsonify({"message": "Book not found in user's cart"}), 404
-    
-    users_collection.update_one(
-        {"_id": user_id},
-        {"$pull": {"cart": book_id}}
-    )
-
-    return jsonify({"message": "Book removed from user's cart."}), 200
-    
-@app.route("/users/<int:user_id>/remove_from_wishlist/<int:book_id>", methods=["DELETE"])
-@jwt_required()
-@cross_origin()
-def remove_book_wishlist(user_id, book_id):
-    user = users_collection.find_one({"_id": user_id})
-    if not user:
-        return jsonify({"error": "User not found"}), 404
-    
-    if book_id not in user["wishlist"]:
-        return jsonify({"message": "Book not found in user's wishlist."}), 404
-    
-    users_collection.update_one(
-        {"_id": user_id},
-        {"$pull": {"wishlist": book_id}}
-    )
-
-    return jsonify({"message": "Book removed from user's wishlist"}), 200
-    
 @app.route("/users/<int:user_id>/add_to_cart", methods=["PUT"])
 @jwt_required()
 @cross_origin()
@@ -336,6 +300,43 @@ def add_book_to_wishlist(user_id):
         return jsonify({"message": "Book added to user's wishlist"}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+   
+#delete array 
+@app.route("/users/<int:user_id>/remove_from_cart/<int:book_id>", methods=["DELETE"])
+@jwt_required()
+@cross_origin()
+def remove_book_cart(user_id, book_id):
+    user = users_collection.find_one({"_id": user_id})
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+    
+    if book_id not in user["cart"]:
+        return jsonify({"message": "Book not found in user's cart"}), 404
+    
+    users_collection.update_one(
+        {"_id": user_id},
+        {"$pull": {"cart": book_id}}
+    )
+
+    return jsonify({"message": "Book removed from user's cart."}), 200
+    
+@app.route("/users/<int:user_id>/remove_from_wishlist/<int:book_id>", methods=["DELETE"])
+@jwt_required()
+@cross_origin()
+def remove_book_wishlist(user_id, book_id):
+    user = users_collection.find_one({"_id": user_id})
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+    
+    if book_id not in user["wishlist"]:
+        return jsonify({"message": "Book not found in user's wishlist."}), 404
+    
+    users_collection.update_one(
+        {"_id": user_id},
+        {"$pull": {"wishlist": book_id}}
+    )
+
+    return jsonify({"message": "Book removed from user's wishlist"}), 200
 
 #cards
 @app.route("/cards", methods = ["GET"])
@@ -364,8 +365,10 @@ def create_card():
         data = request.get_json()
         new_card = {
             "_id": cards_collection.count_documents({}) + 1,
-            "number": data["number"],
+            "Card_number": data["number"],
             "holder": data["holder"],
+            "exp" : data["exp"],
+            "cvv" : data["cvv"],
             "balance": data["balance"]
         }
         all_cards = list(cards_collection.find())

@@ -101,16 +101,18 @@ function Detail_Product_login_ID(){
                                 <p>หมวดหมู่: {selectedBook.category}</p>
                                 <p>ราคา: {selectedBook.price}.00 บาท</p>
                                 
-                                <div className="buttom-bar">
-                                    <Link to={"/checkout"} >
-                                        <button className="buttom-buynow" onClick={onCart}>
-                                            ซื้อเลย
-                                        </button>
-                                    </Link>
-                                    <button className="buttom-cart" onClick={onCart}>
+                                <div className="button-bar">
+
+                                        <Link className="button-buynow-container" to={"/checkout"} >
+                                            <button className="button-buynow" onClick={onCart}>
+                                                ซื้อเลย
+                                            </button>
+                                        </Link>
+   
+                                    <button className="button-cart" onClick={onCart}>
                                         <img src="/images/cart.png" alt="cart" />
                                     </button>
-                                    <button className="buttom-heart" onClick={onWishlist}>
+                                    <button className="button-heart" onClick={onWishlist}>
                                         <img src="/images/heart.png" alt="heart" />
                                     </button>
                                 </div>
