@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
-import Promote from "./components/Promote"
+import Promote2 from "./components/Promote2"
 import ShowMore_Product from "./components/ShowMore_Product";
 import Footer from "./components/Footer";
 function HomePage(props)
@@ -11,7 +11,7 @@ function HomePage(props)
     return (
         <div className="homepage-contrainer">
             <Navbar setToken={props.setToken}/>
-            <Promote/>
+            <Promote2/>
             <ShowMore_Product login = {login}/>
             <Footer/>
         </div>
