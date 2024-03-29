@@ -1,0 +1,124 @@
+.settings-page {
+  display: flex;
+  margin-top: 108px;
+}
+
+.sidebar {
+  flex: 0 0 250px;
+  background-color: #f2f2f2;
+  padding-top: 20px;
+  height: 100vh;
+}
+
+.sidebar .header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.sidebar button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  background-color: #ddd;
+  text-align: center;
+  cursor: pointer;
+}
+
+.sidebar button:hover {
+  background-color: #ccc;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+.tab {
+  display: none;
+}
+
+.tab.active {
+  display: block;
+}
+
+.profile-info {
+  text-align: left; /* Align text to the left */
+  margin-top: 15px;
+}
+
+.edit-mode {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+
+.edit-mode input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+.edit-button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.edit-button:hover
+ {
+  background-color: #45a049; /* Darker green */
+}
+.save-button,
+.cancel-button {
+  background-color: #4CAF50; /* Green for Save button */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 15px;
+  margin-left: 10px; /* Add margin between buttons */
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.cancel-button {
+  background-color: #f44336; /* Red for Cancel button */
+}
+
+.save-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+.cancel-button:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+}
+
+.button-group button.edit-button {
+  margin-left: auto; /* Move edit button to the right */
+}
+.password-change-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}

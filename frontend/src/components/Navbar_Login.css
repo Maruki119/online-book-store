@@ -1,0 +1,118 @@
+.nav_container {
+    display: flex;
+    height: 105px;
+    background-color: rgb(241, 241, 241);
+    border-bottom: 2px solid #436850;
+}
+
+.logo {
+    display: block;
+    width: 145px;
+    height: 85px;
+    display: flex;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 50px;  
+    margin-left: 25px; 
+}
+
+.logo img {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.menu {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    padding-top: 37px;
+    padding-bottom: 35px;
+    padding-left: 60px;
+}
+
+h1 {
+    display: flex;
+    width: 120px;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    color:#436850;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 25px;
+}
+
+.App-search {
+    width: 650px;
+    display: flex;
+    align-items: center;
+    margin-top: 7px;
+    padding: 35px;
+}
+
+input {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #436850;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.buttonLove{
+    display: flex;
+    width: 32px;
+    height: 32px;
+
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+    vertical-align: middle;
+    opacity: 0.8;
+    
+    margin-top: 37px;
+    margin-left: 90px;
+  }
+
+.buttonCart{
+    display: flex;
+    width: 32px;
+    height: 32px;
+
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    vertical-align: middle;
+    margin-top: 36px;
+    margin-left: 40px;
+}
+
+.profile{
+    display: flex;
+    width: 250px;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.buttonProfile{
+    display: absolute;
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 3px 5px 0px 50px;
+    opacity: 0.8;
+    vertical-align: middle;
+}

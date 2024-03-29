@@ -1,0 +1,36 @@
+
+.Footer-Container {
+    background-color: #474444; 
+    margin-top: 100px;
+    padding: 30px;
+    width: 100%;
+}
+
+
+.Footer-Container a {
+    margin-bottom: 20px;
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make text bold */
+}
+
+
+/* Style for the nested container */
+.Footer2-Container {
+    margin-top: 20px; /* Top margin */
+}
+
+/* Style for the copyright notice */
+.Footer2-Container h3 {
+    font-size: 12px; /* Font size */
+    color: #999; /* Text color */
+    margin: 0; /* Remove margin */
+    margin-left: 50%;
+}
+.Footer1-Container ul{
+    color: aliceblue;
+    margin-left: 8%;
+}
+.Footer1-Container a{
+    color: white;
+    margin-left: 7%;
+}
