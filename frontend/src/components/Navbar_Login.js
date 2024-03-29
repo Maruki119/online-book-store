@@ -10,7 +10,7 @@ function LoginLaeo(props){
 
   const lisCartoons = [
     {
-        title: "เลือกหมวด",
+        title: "หมวดหมู่",
         
         submenu: [
             

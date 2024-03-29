@@ -9,7 +9,7 @@ function Navbar(props)
 {
     const lisCartoons = [
         {
-            title: "เลือกหมวด",
+            title: "หมวดหมู่",
             submenu: [
                 {title: "ทั้งหมด" 
                 },
