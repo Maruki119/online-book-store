@@ -100,25 +100,6 @@ function LoginLaeo(props){
         })
     };
 
-    function handleSearch(event){
-        event.preventDefault();
-        axios.get("http://127.0.0.1:5000/search", {
-            params: {
-                title: search
-            }
-        })
-        .then((response) => {
-            console.log("Search Results: ", response.data);
-        }).catch((error) => {
-            console.error("Search Error: ", error);
-        });
-    }
-
-    function handleSearchInput(event){
-        setSearch(event.target.value);
-    }
-
-
     const toggleDropdown = () => {
         setIsOpenDropdown(!isOpenDropdown);
     };
@@ -148,13 +129,13 @@ function LoginLaeo(props){
                     </ul>
                 </nav>
                 <div className="App-search">
-                    <form onSubmit={handleSearch} className="App-search">
+                    <form className="App-search">
                         <input
                             className='serch-input'
                             type='text'
                             placeholder="วันนี้อ่านอะไรดีจ้ะ?" 
-                            value={search}
-                            onChange={handleSearchInput}
+                            readOnly
+
                         />
                     </form>
                 </div>
