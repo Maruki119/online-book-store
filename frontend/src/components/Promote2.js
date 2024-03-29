@@ -8,7 +8,7 @@ function Promote() {
             <div className="promote-container">
                 <Carousel className="slider-container"
                     width={1535} //1535
-                    interval={5000}
+                    interval={3000}
                     autoPlay={true}
                     infiniteLoop={true}
                     animationHandler={"slide"}
