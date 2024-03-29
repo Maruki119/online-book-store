@@ -1,0 +1,25 @@
+.promote-container {
+    width: 100%;
+}
+
+.slider-container {
+    margin-top: 105px;
+    border-top: 5px solid #436850;
+    border-bottom: 5px solid #436850 ;
+    height: auto;
+    width: 100%;
+    display: flex;
+    background-color: #D3E7C0;
+    align-items: center;
+    justify-content: center; 
+}
+
+.slider-container img{
+    pointer-events: none;
+    /* max-height: 600px; 600 */
+    /* height: auto; */
+    max-width: 90%;
+    /* display: block; */
+    padding: 10px 5px 5px 10px; 
+    object-fit: contain;
+}
