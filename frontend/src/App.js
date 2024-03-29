@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import HomePage from "./Homepage";
-import Login from './components/login'
 import useToken from './components/useToken'
-import SignUp from "./components/sign_up";
 import HomePage_Login from "./Homepage_Login";
 import Checkout_page from "./Checkout";
 import Forgetpassword from "./components/forgetpassword";
@@ -13,7 +11,6 @@ import WishListPage from "./WishListPage";
 import LibaryPage from "./Libarypage";
 import Settingpage from "./Settingpage";
 import Topuppage from "./Topuppage";
-import SearchPage from "./components/SearchPage";
 
 function App() {
   const { token, removeToken, setToken } = useToken();
@@ -39,7 +36,6 @@ function App() {
               <Route exact path = "/libary" element = {<LibaryPage/>}></Route>
               <Route exact path = "/setting" element = {<Settingpage/>}></Route>
               <Route exact path = "/topup" element = {<Topuppage/>}></Route>
-              <Route exact path = "/search/" element = {<SearchPage/>}></Route>
             </Routes>
           </>
         )}
