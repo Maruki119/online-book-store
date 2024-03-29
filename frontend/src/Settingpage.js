@@ -1,16 +1,16 @@
 import Profile from "./components/Navbar_Login";
 import useToken from './components/useToken'
 import Footer from "./components/Footer";
-import Setting from "./components/Setting";
-function Setting_page()
+import SettingsPage from "./components/Setting";
+function Settingpage()
 {
 
     const { token, removeToken, setToken } = useToken();
 
     return (
-        <div className="homepage-contrainer">
+        <div className="settingpage-contrainer">
             <Profile token={token} removeToken = {removeToken} setToken={setToken}/>
-            <Setting/>
+            <SettingsPage/>
             <Footer/>
         </div>
 
@@ -18,4 +18,4 @@ function Setting_page()
 
 }
 
-export default Setting_page;
+export default Settingpage;
