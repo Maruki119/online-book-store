@@ -90,6 +90,7 @@ function Navbar(props)
                             className='serch-input'
                             type='text'
                             placeholder="วันนี้อ่านอะไรดีจ้ะ?" 
+                            readOnly
                         />
                     </form>
                 </div>
