@@ -11,6 +11,7 @@ import Detail_Product_login_ID from "./components/Detail_Product_login_ID";
 import Detail_Product_login_Category from "./components/Detail_Product_login_Category";
 import WishListPage from "./WishListPage";
 import LibaryPage from "./Libarypage";
+import Setting_page from "./Setting_page";
 
 function App() {
   const { token, removeToken, setToken } = useToken();
@@ -34,6 +35,7 @@ function App() {
               <Route path = "/detail/:category/:bookId" element = {<Detail_Product_login_ID/>}></Route>
               <Route exact path = "/wishlist" element = {<WishListPage/>}></Route>
               <Route exact path = "/libary" element = {<LibaryPage/>}></Route>
+              <Route exact path = "/setting" element = {<Setting_page/>}></Route>
             </Routes>
           </>
         )}

@@ -26,17 +26,35 @@ function Detail_Product_login_ID(){
             <div className="Detail-Product">
                 {selectedBook && (
                     <div className="Books_Info-container">
-                        <div>
-                            <img className="book-image-detial" src={selectedBook.image} alt={selectedBook.title} />
+                        <div className="Detail-Product-container">
+                                <img className="book-image-detial" src={selectedBook.image} alt={selectedBook.title} />
+
+                            <div className="Info">
+                                <h2 className="title-book">{selectedBook.title}</h2>
+                                <p>ผู้เขียน: {selectedBook.author}</p>
+                                <p>หมวดหมู่: {selectedBook.category}</p>
+                                <p>ราคา: {selectedBook.price} บาท</p>
+                                
+                                <div className="buttom-bar">
+                                    <button >
+                                        ซื้อเลย
+                                    </button>
+                                    <button >
+                                        <img src="/images/cart.png" alt="cart" />
+                                    </button>
+                                    <button >
+                                        <img src="/images/heart.png" alt="heart" />
+                                    </button>
+                                </div>
+                            </div>
+
                         </div>
-                        <div className="Info">
-                            <h2>{selectedBook.title}</h2>
-                            <p>ผู้เขียน: {selectedBook.author}</p>
-                            <p>หมวดหมู่: {selectedBook.category}</p>
-                            <p>ราคา: {selectedBook.price} บาท</p>
+                        <div className="Synopsis">
+                            <h2>เรื่องย่อ</h2>
+                            <p>{selectedBook.synopsis}</p>
                         </div>
-                    </div>
-            )}
+                    </div>    
+                )}
             </div>
         </div>
     );

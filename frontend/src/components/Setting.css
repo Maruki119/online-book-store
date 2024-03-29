@@ -1,0 +1,76 @@
+.setting-container{
+    margin-top: 105px;
+    height: auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 45px;
+    justify-content: center;
+    align-items: flex-start;
+}
+.setting-account {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+  }
+  
+  .setting-account h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .setting-account p {
+    margin-bottom: 10px;
+    color: #666;
+  }
+  
+  .setting-account label {
+    display: block;
+    margin-bottom: 10px;
+    position: relative;
+    cursor: pointer;
+    line-height: 1.5;
+    
+  }
+  
+  .setting-account input[type="radio"] {
+    display: none;
+  }
+  
+  .setting-account input[type="radio"] + span:before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    position: relative; /* Change position to relative */
+    margin-right: 10px; /* Add margin to the right */
+    transform: translateY(15%);
+  }
+  
+  .setting-account input[type="radio"]:checked + span:before {
+    background: #007bff;
+  }
+
+  .setting-account input[type="radio"]:checked + span:after {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    left: 7px;
+    top: 50%;
+    transform: translateY(-30%);
+  }
+
+  /* *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #33333348;
+  } */
