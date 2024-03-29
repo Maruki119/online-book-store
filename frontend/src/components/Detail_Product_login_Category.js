@@ -8,10 +8,14 @@ import Footer from "./Footer";
 
 function Detail_Product_login_Category() {
 
-
+  const [activeTab, setActiveTab] = useState('All_categories');
   const [booksInCategory, setBooksInCategory] = useState([]);
   const { token, removeToken, setToken } = useToken();
   const { category } = useParams();
+
+  const openTab = (tabName) => {
+    setActiveTab(tabName);
+  };
 
   useEffect(() => {
     axios.get(`http://127.0.0.1:5000/books/${category}`)
@@ -41,21 +45,21 @@ function Detail_Product_login_Category() {
 
             <div className="Side_bar-Category">
                 <div className="choose-container">                 
-                    <botton>เลือกหมวด</botton>
+                    <h2>เลือกหมวด</h2>
                     <div className="choose_Category">
-                        <botton>ทุกหมวดหมู่</botton>
-                        <botton>การ์ตูน</botton>
+                        <button onClick={() => openTab('All_categories')} className={activeTab === 'All_categories' ? 'active' : ''}>ทุกหมวดหมู่</button>
+                        <button onClick={() => openTab('cartoon')} className={activeTab === 'cartoon' ? 'active' : ''}>การ์ตูน</button>
                         <div className="sub-choose_Category">
-                          <botton>การ์ตูนโรแมนซ์</botton>
-                          <botton>การ์ตูนแอคชั่น</botton>
-                          <botton>การ์ตูนไซไฟ</botton>
-                          <botton>การ์ตูนตลก</botton>
-                          <botton>การ์ตูนกีฬา</botton>
+                          <button onClick={() => openTab('Action')} className={activeTab === 'Action' ? 'active' : ''}>การ์ตูนแอคชั่น</button>
+                          <button onClick={() => openTab('Comedy')} className={activeTab === 'Comedy' ? 'active' : ''}>การ์ตูนตลก</button>
+                          <button onClick={() => openTab('Romantic')} className={activeTab === 'Romantic' ? 'active' : ''}>การ์ตูนโรแมนซ์</button>
+                          <button onClick={() => openTab('Sport')} className={activeTab === 'Sport' ? 'active' : ''}>การ์ตูนกีฬา</button>
+                          <button onClick={() => openTab('Sci-fi')} className={activeTab === 'Sci-fi' ? 'active' : ''}>การ์ตูนไซไฟ</button>
                         </div>
-                        <botton>นิยาย</botton>
+                        <button onClick={() => openTab('novel')} className={activeTab === 'novel' ? 'active' : ''}>นิยาย</button>
                         <div className="sub-choose_Category">
-                          <bottonl>นิยายสืบสวน</bottonl>
-                          <botton>นิยายไซไฟ</botton>
+                          <button onClick={() => openTab('Sci-fi Novels')} className={activeTab === 'Sci-fi Novels' ? 'active' : ''}>นิยายไซไฟ</button>
+                          <button onClick={() => openTab('Detective Novels')} className={activeTab === 'Detective Novels' ? 'active' : ''}>นิยายสืบสวน</button>
                         </div>
                     </div>
                 </div>

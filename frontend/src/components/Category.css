@@ -1,25 +1,23 @@
-.Detail_Category-container{
+.Detail_Category-container {
     width: 100%;
     height: auto;
     background-color: #fff;
     margin-top: 125px;
-    
 }
 
-.Category-text{
-    
+.Category-text {
     width: 80%;
     margin-left: 50px;
     margin: auto;
     margin-bottom: 30px;
 }
 
-.Category-text p{
+.Category-text p {
     font-size: 32px;
     color: #436850;
 }
 
-.Search-container{
+.Search-container {
     width: 80%;
     margin: auto;
     margin-bottom: 80px;
@@ -27,56 +25,71 @@
     border-bottom: 3px solid #436850;
 }
 
-.search-category{
+.search-category {
     padding: 5px;
     border-radius: 15px;
     border-color: #436850;
 }
 
-.Product_Category-container{
+.Product_Category-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     grid-auto-rows: minmax(100px, auto);
-   
     height: auto;
     width: 80%;
     margin: auto;
 }
 
-.Side_bar-Category{
+.Side_bar-Category {
     width: 35%;
-    height: 600px;
-    padding: 20px;
+    height: 500px;
     grid-column: 1 / 3;
     grid-row: 1;
     background-color: #AEBCA0;
     border-radius: 10px;
-    
 }
 
-.choose-container h2{
-    color: #12362A;
+.choose-container h2 {
+    color: #ffff;
+    height: 60px;
+    width: 100%;
+    padding-top: 10px;
+    padding-left: 10px;
+    background-color: #12362A;
+    border-radius: 10px;
     font-size: 24px;
     margin-bottom: 30px;
 }
 
-.choose_Category  ul{
-    color: #436850;
+.choose_Category button {
+    display: flex;
+    color: #fffffff7;
+    border: none;
+    width: 100%;
+    height: 35px;
+    padding: 5px;
     font-size: 18px;
+    background-color: transparent;
     padding-left: 20px;
-    margin-bottom: 20px;
+    cursor: pointer; /* Add cursor pointer for clickable buttons */
+    
 }
 
-.sub-choose_Category ul{
-    color: #436850;
+.choose_Category button.active {
+    background-color: #43685046; /* Change background color of active tab */
+}
+
+.sub-choose_Category button {
+    color: #fffffff7;
+    background-color: transparent;
+    border: none;
+    width: 100%;
     font-size: 18px;
     padding-left: 40px;
-    margin-bottom: 20px;
 }
 
-.Show-Product-Category{
-    
+.Show-Product-Category {
     grid-column: 2 / 3;
     grid-row: 1;
     width: 170%;
