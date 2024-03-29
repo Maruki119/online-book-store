@@ -47,8 +47,8 @@ function Detail_Product_login_Category() {
                 <div className="choose-container">                 
                     <h2>เลือกหมวด</h2>
                     <div className="choose_Category">
-                        <button onClick={() => openTab('All_categories')} className={activeTab === 'All_categories' ? 'active' : ''}>ทุกหมวดหมู่</button>
-                        <button onClick={() => openTab('cartoon')} className={activeTab === 'cartoon' ? 'active' : ''}>การ์ตูน</button>
+                        <button onClick={() => openTab('All_categories')} className={activeTab === 'All_categories' ? 'active' : ''}>● ทุกหมวดหมู่</button>
+                        <button onClick={() => openTab('cartoon')} className={activeTab === 'cartoon' ? 'active' : ''}>● การ์ตูน</button>
                         <div className="sub-choose_Category">
                           <button onClick={() => openTab('Action')} className={activeTab === 'Action' ? 'active' : ''}>การ์ตูนแอคชั่น</button>
                           <button onClick={() => openTab('Comedy')} className={activeTab === 'Comedy' ? 'active' : ''}>การ์ตูนตลก</button>
@@ -56,7 +56,7 @@ function Detail_Product_login_Category() {
                           <button onClick={() => openTab('Sport')} className={activeTab === 'Sport' ? 'active' : ''}>การ์ตูนกีฬา</button>
                           <button onClick={() => openTab('Sci-fi')} className={activeTab === 'Sci-fi' ? 'active' : ''}>การ์ตูนไซไฟ</button>
                         </div>
-                        <button onClick={() => openTab('novel')} className={activeTab === 'novel' ? 'active' : ''}>นิยาย</button>
+                        <button onClick={() => openTab('novel')} className={activeTab === 'novel' ? 'active' : ''}>● นิยาย</button>
                         <div className="sub-choose_Category">
                           <button onClick={() => openTab('Sci-fi Novels')} className={activeTab === 'Sci-fi Novels' ? 'active' : ''}>นิยายไซไฟ</button>
                           <button onClick={() => openTab('Detective Novels')} className={activeTab === 'Detective Novels' ? 'active' : ''}>นิยายสืบสวน</button>
