@@ -23,7 +23,7 @@ function ShowMore_Product({login}) {
       return (
         <div className="Category-Container">
           <button className="Category">{category}</button>
-          <Link to={`/detail/${category}`} className="Category-link">
+          <Link to={`/detail`} className="Category-link">
             <a className="Category-Link" href="#">
               ดูทั้งหมด
             </a>

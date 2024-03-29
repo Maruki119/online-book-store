@@ -90,12 +90,19 @@ def my_profile():
     
     return jsonify(response_body)
 
+#search book
 @app.route('/search', methods = ["GET"])
 @cross_origin()
 def search():
     title = request.args.get('title', '')
+    
     if not title:
-        return jsonify({"error": "Please provide a 'title' parameter in the query."}), 400
+        search_result = list(books_collection.find({}))
+        response = {
+            "message": "All books returned since no title provided.",
+            "results": search_result
+        }
+        return jsonify(response), 200
 
     search_result = list(books_collection.find({"title": {"$regex": title, "$options": "i"}}))
     if not search_result:
