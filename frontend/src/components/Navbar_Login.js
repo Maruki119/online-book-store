@@ -188,17 +188,21 @@ function LoginLaeo(props){
                                     </div>
                       
                                     <div className="items">
+                                        <Link to="/topup">
                                             <div className="item">
                                                 <p><span role="img" aria-label="coin">💰</span> {profileData.balance}</p>
                                             </div>
+                                        </Link>
                                         <Link to="/libary">
                                             <div className="item">
                                                 <span> ชั้นหนังสือ</span>
                                             </div>
                                         </Link>
-                                        <div className="item">
-                                            <p>ตั้งค่าบัญชี</p>
-                                        </div>
+                                        <Link to="/setting">
+                                            <div className="item">
+                                                <p>ตั้งค่าบัญชี</p>
+                                            </div>
+                                        </Link>
                                         <Link to="/">
                                             <div className="item logout" onClick = {handleLogout}>
                                                 <p>ออกจากระบบ</p>
