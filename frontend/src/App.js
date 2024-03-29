@@ -12,6 +12,7 @@ import Detail_Product_login_Category from "./components/Detail_Product_login_Cat
 import WishListPage from "./WishListPage";
 import LibaryPage from "./Libarypage";
 import Setting_page from "./Setting_page";
+import Topuppage from "./Topuppage";
 
 function App() {
   const { token, removeToken, setToken } = useToken();
@@ -36,6 +37,7 @@ function App() {
               <Route exact path = "/wishlist" element = {<WishListPage/>}></Route>
               <Route exact path = "/libary" element = {<LibaryPage/>}></Route>
               <Route exact path = "/setting" element = {<Setting_page/>}></Route>
+              <Route exact path = "/topup" element = {<Topuppage/>}></Route>
             </Routes>
           </>
         )}

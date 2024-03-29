@@ -1,0 +1,57 @@
+.topup {
+    display: flex;
+    flex-direction: column;
+    margin-top: 200px;
+  }
+  
+  .topup-amounts {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .topup-box {
+    flex: 0 1 calc(33.33% - 20px);/* Adjust as needed */
+    margin: 10px;
+     
+  }
+  
+  .price-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  .coin-icon {
+    font-size: 24px; /* Adjust the size of the custom icon */
+  }
+  
+  .selected {
+    border-color: #436850; /* Example: Highlight selected item */
+  }
+  
+  .topup-button {
+    margin-top: 20px; /* Adjust as needed */
+    align-self: center;
+    
+  }
+  
+  .bigger-button {
+    font-size: 20px; /* Adjust the size of the button */
+    padding: 15px 30px; /* Adjust the padding of the button */
+    border-radius: 10px;
+    background-color: #436850;
+    color: #ffff;
+
+  }
+  .bigger-button:hover {
+    background-color: #ADBC9F;
+}
+
+  .coin{
+    width: 80px;
+    height: 80px;
+  }
+  
