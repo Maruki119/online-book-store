@@ -84,6 +84,47 @@ const PurchasePage = () => {
     if (!selectedPaymentMethod) {
       alert('Please select a payment method.');
       return;
+    }else{
+      console.log("Paid by : ", selectedPaymentMethod);
+      if(selectedPaymentMethod === 'Balance'){
+        if (profileData.cart.length === 0) {
+          alert("Your cart is empty.");
+        } else {
+
+          if(profileData.balance >= totalPrice){
+              const totalBalance = profileData.balance-totalPrice;
+              axios.put(`http://127.0.0.1:5000/users/${profileData._id}`, 
+              {balance: totalBalance},{
+                headers: {
+                  Authorization: 'Bearer ' + token
+                }
+              }).then((response) => {
+                console.log(response.data);
+                console.log(response.data.message);
+              }).catch((error) => {
+                console.error('Error fetching data:', error);
+              })
+
+
+              profileData.cart.forEach(item => {
+              axios.put(`http://127.0.0.1:5000/users/${profileData._id}/add_book`, 
+              {book_id: item},{
+                headers: {
+                  Authorization: 'Bearer ' + token
+                }
+              }).then((response) => {
+                console.log(response.data);
+                console.log(response.data.message);
+              }).catch((error) => {
+                console.error('Error fetching data:', error);
+              })
+            });
+            window.location.reload();
+          }else{
+            alert("You don't have enough Balance.");
+          }
+        }
+      }
     }
 
     setIsProcessing(true);
@@ -100,7 +141,7 @@ const PurchasePage = () => {
       <h1>Book Details</h1>
       <div className="book-detail-container">
         {books.map((book) => (
-          <BookDetail key={book.id} book={book} />
+          <BookDetail key={books.id} book={book} userId={profileData._id} token={token}/>
         ))}
       </div>
     </div>
@@ -149,37 +190,14 @@ const PurchasePage = () => {
           <input
             type="radio"
             name="paymentMethod"
-            value="paypal"
-            checked={selectedPaymentMethod === 'paypal'}
-            onChange={() => handlePaymentMethodChange('paypal')}
+            value="Balance"
+            checked={selectedPaymentMethod === 'Balance'}
+            onChange={() => handlePaymentMethodChange('Balance')}
           />
-          <span>PayPal</span>
+          <span>Balance💰</span>
         </label>
-        {selectedPaymentMethod === 'paypal' && (
-          <div className="input-box">
-            <input
-              type="text"
-              name="name"
-              placeholder="Name"
-              value={userInfo.name}
-              onChange={handleInputChange}
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={userInfo.email}
-              onChange={handleInputChange}
-            />
-            <input
-              type="text"
-              name="address"
-              placeholder="Address"
-              value={userInfo.address}
-              onChange={handleInputChange}
-            />
-          </div>
-        )}
+        {selectedPaymentMethod === 'Balance'}
+
         <p>Total Price: {totalPrice.toFixed(2)} ฿</p>
         <div className="purchase-button-container">
           <button onClick={handleClick} disabled={isProcessing} className="purchase-button">
