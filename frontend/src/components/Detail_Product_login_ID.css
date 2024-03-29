@@ -19,7 +19,7 @@
 
 .book-image-detial{
     border-radius: 10px;
-    border: 3px solid #436951;
+    border: 3px solid #436851;
     width: 245px;
     height: 315px;
 }
@@ -33,7 +33,7 @@
 
 .Info p{
     margin-top: 15px;
-    font-size: 20   px;
+    font-size: 20px;
 }
 
 .title-book{
@@ -45,12 +45,36 @@
 }
 
 .buttom-bar button{
-
-    width: 50px;
+    border-radius: 8px;
+    width: 70px;
     height: auto;
     justify-items: center;
     align-items: auto;
-    margin: 30px 30px 10px 0px;
+    margin: 40px 30px 10px 0px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.buttom-bar button:hover{
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.buttom-cart{
+    padding-right: 4px;
+}
+
+.buttom-heart{
+    padding-top: 6px;
+}
+
+.buttom-buynow{
+    background: #436850;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.buttom-buynow:hover{
+    background-color: #527961 ;
 }
 
 .Synopsis{

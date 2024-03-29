@@ -33,16 +33,16 @@ function Detail_Product_login_ID(){
                                 <h2 className="title-book">{selectedBook.title}</h2>
                                 <p>ผู้เขียน: {selectedBook.author}</p>
                                 <p>หมวดหมู่: {selectedBook.category}</p>
-                                <p>ราคา: {selectedBook.price} บาท</p>
+                                <p>ราคา: {selectedBook.price}.00 บาท</p>
                                 
                                 <div className="buttom-bar">
-                                    <button >
+                                    <button className="buttom-buynow" >
                                         ซื้อเลย
                                     </button>
-                                    <button >
+                                    <button className="buttom-cart" >
                                         <img src="/images/cart.png" alt="cart" />
                                     </button>
-                                    <button >
+                                    <button className="buttom-heart">
                                         <img src="/images/heart.png" alt="heart" />
                                     </button>
                                 </div>
