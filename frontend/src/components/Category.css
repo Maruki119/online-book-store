@@ -33,7 +33,7 @@
 
 .Product_Category-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 2fr; /* Adjust column proportions */
     gap: 10px;
     grid-auto-rows: minmax(100px, auto);
     height: auto;
@@ -48,6 +48,8 @@
     grid-row: 1;
     background-color: #AEBCA0;
     border-radius: 10px;
+    padding: 20px; /* Add padding */
+    margin-right: 20px; /* Add margin to create distance from the show book part */
 }
 
 .choose-container h2 {
@@ -93,7 +95,11 @@
 .Show-Product-Category {
     grid-column: 2 / 3;
     grid-row: 1;
-    width: 170%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-left: 60px; /* Add margin to create distance from the sidebar */
 }
 
 .Show-Product-Category{
