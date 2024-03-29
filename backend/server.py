@@ -365,14 +365,14 @@ def create_card():
         data = request.get_json()
         new_card = {
             "_id": cards_collection.count_documents({}) + 1,
-            "Card_number": data["number"],
+            "Card_number": data["Card_number"],
             "holder": data["holder"],
             "exp" : data["exp"],
             "cvv" : data["cvv"],
             "balance": data["balance"]
         }
         all_cards = list(cards_collection.find())
-        if(next((i for i in all_cards if i["number"] == data["number"]), None)):
+        if(next((i for i in all_cards if i["Card_number"] == data["Card_number"]), None)):
             return jsonify( {"error":"Cannot create new card"}), 500
         else:
             cards_collection.insert_one(new_card)
