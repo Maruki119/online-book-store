@@ -61,13 +61,40 @@ function WishList() {
   }
 
   const handleCartClick = (bookId) => {
-    // Logic for adding the book to the cart
-    console.log('Adding book to cart:', bookId);
+    axios.put(`http://127.0.0.1:5000/users/${profileData._id}/add_to_cart`, {
+            book_id: bookId
+        },{
+            headers: {
+              Authorization: 'Bearer ' + token
+            }
+        }).then((response) => {
+            const message = response.data.message;
+            console.log(response.data);
+            console.log('Adding book to cart:', bookId);
+            alert(message);
+        })
+        .catch((error) => {
+            console.error('Error fetching data:', error);
+        })
   };
 
   const handleCrossClick = (bookId) => {
-    // Logic for removing the book from the wishlist
-    console.log('Removing book from wishlist:', bookId);
+    axios.delete(`http://127.0.0.1:5000/users/${profileData._id}/remove_from_wishlist/${bookId}`, 
+      {
+        headers: {
+          Authorization: 'Bearer ' + token
+        }
+      }).then((response) => {
+        const message = response.data.message;
+        console.log(response.data);
+        console.log('Removing book from wishlist:', bookId);
+        window.location.reload();
+        alert(message);
+      })
+      .catch((error) => {
+          console.error('Error fetching data:', error);
+      })
+
   };
 
   return (
