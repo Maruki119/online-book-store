@@ -199,9 +199,11 @@ function LoginLaeo(props){
                                         <div className="item">
                                             <p>ตั้งค่าบัญชี</p>
                                         </div>
-                                        <div className="item logout" onClick = {handleLogout}>
-                                            <p>ออกจากระบบ</p>
-                                        </div>
+                                        <Link to="/">
+                                            <div className="item logout" onClick = {handleLogout}>
+                                                <p>ออกจากระบบ</p>
+                                            </div>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
