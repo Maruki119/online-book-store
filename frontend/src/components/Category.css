@@ -98,12 +98,17 @@
 
 .Show-Product-Category{
     width: 80%;
+    height: auto;
     margin-bottom: 5px;
-
+    grid-column: 2/3;
+    grid-row: 1;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fill,minmax(200px ,1fr));
 }
 
 .Detail_Category-item{
-    display: flex;
+
     width: 190px;
     height: 386px;
     border-radius: 10px;
@@ -112,7 +117,6 @@
 }
 
 .Detail_Category-image{
-    display: flex;
     justify-content: center;
     align-items: center;
     width: 150px;
