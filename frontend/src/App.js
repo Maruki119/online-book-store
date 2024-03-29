@@ -13,6 +13,7 @@ import WishListPage from "./WishListPage";
 import LibaryPage from "./Libarypage";
 import Settingpage from "./Settingpage";
 import Topuppage from "./Topuppage";
+import SearchPage from "./components/SearchPage";
 
 function App() {
   const { token, removeToken, setToken } = useToken();
@@ -38,6 +39,7 @@ function App() {
               <Route exact path = "/libary" element = {<LibaryPage/>}></Route>
               <Route exact path = "/setting" element = {<Settingpage/>}></Route>
               <Route exact path = "/topup" element = {<Topuppage/>}></Route>
+              <Route exact path = "/search/" element = {<SearchPage/>}></Route>
             </Routes>
           </>
         )}
