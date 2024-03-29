@@ -1,7 +1,0 @@
-Flask
-Gunicorn
-flask
-flask_cors
-flask_jwt_extended
-mongopy
-datetime
