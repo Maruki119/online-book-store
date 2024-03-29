@@ -1,5 +1,5 @@
 .purchase-container {
-    width: 100%;
+    width: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 45px;
