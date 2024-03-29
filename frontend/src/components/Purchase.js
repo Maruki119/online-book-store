@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Purchase.css'; // Import the CSS file
 import BookDetail from './BookDetail';
 import axios from "axios";
-import useToken from './useToken'
+import useToken from './useToken';
 
 const PurchasePage = () => {
   const [isProcessing, setIsProcessing] = useState(false);
@@ -10,12 +10,15 @@ const PurchasePage = () => {
   const [userInfo, setUserInfo] = useState({
     name: '',
     email: '',
-    address: ''
+    address: '',
+    exp: '',
+    cvv: ''
   });
 
   const [books, setBooks] = useState([]);
   const [profileData, setProfileData] = useState(null);
   const { token, removeToken, setToken} = useToken();
+  const [cardData, setCardData] = useState(null);
 
   useEffect(() => {
     if (profileData) {
@@ -54,6 +57,30 @@ const PurchasePage = () => {
     });
   }
 
+  useEffect(() => {
+    if (profileData && profileData.card_id) {
+      axios.get(`http://127.0.0.1:5000/cards/number/${profileData.card_id}`, {
+        headers: {
+          Authorization: 'Bearer ' + token
+        }
+      })
+      .then((response) => {
+        const res = response.data;
+        setCardData({
+          _id: res._id,
+          Card_number: res.Card_number,
+          holder: res.holder,
+          exp: res.exp,
+          cvv: res.cvv,
+          balance: res.balance
+        });
+      })
+      .catch((error) => {
+        console.error('Error fetching card data:', error);
+      });
+    }
+  }, [profileData, token]);
+
   function fetchBooksForUser() {
     axios.get(`http://127.0.0.1:5000/users/${profileData._id}/cart`, {
       headers: {
@@ -62,7 +89,6 @@ const PurchasePage = () => {
     })
       .then(response => {
         setBooks(response.data.books);
-        console.log(response.data);
       })
       .catch(error => {
         console.error('Error fetching books:', error);
@@ -84,45 +110,105 @@ const PurchasePage = () => {
     if (!selectedPaymentMethod) {
       alert('Please select a payment method.');
       return;
-    }else{
+    } else {
       console.log("Paid by : ", selectedPaymentMethod);
-      if(selectedPaymentMethod === 'Balance'){
+      if (selectedPaymentMethod === 'Balance') {
+        if (!profileData) {
+          alert("Profile data is not available.");
+          return;
+        }
         if (profileData.cart.length === 0) {
           alert("Your cart is empty.");
-        } else {
-
-          if(profileData.balance >= totalPrice){
-              const totalBalance = profileData.balance-totalPrice;
-              axios.put(`http://127.0.0.1:5000/users/${profileData._id}`, 
-              {balance: totalBalance},{
-                headers: {
-                  Authorization: 'Bearer ' + token
-                }
-              }).then((response) => {
-                console.log(response.data);
-                console.log(response.data.message);
-              }).catch((error) => {
-                console.error('Error fetching data:', error);
-              })
-
-
-              profileData.cart.forEach(item => {
-              axios.put(`http://127.0.0.1:5000/users/${profileData._id}/add_book`, 
-              {book_id: item},{
-                headers: {
-                  Authorization: 'Bearer ' + token
-                }
-              }).then((response) => {
-                console.log(response.data);
-                console.log(response.data.message);
-              }).catch((error) => {
-                console.error('Error fetching data:', error);
-              })
+          return;
+        }
+        if (profileData.balance >= totalPrice) {
+          const totalBalance = profileData.balance - totalPrice;
+          axios.put(`http://127.0.0.1:5000/users/${profileData._id}`, 
+            { balance: totalBalance },
+            {
+              headers: {
+                Authorization: 'Bearer ' + token
+              }
+            })
+            .then((response) => {
+              console.log(response.data);
+              console.log(response.data.message);
+            })
+            .catch((error) => {
+              console.error('Error updating balance:', error);
             });
-            window.location.reload();
-          }else{
-            alert("You don't have enough Balance.");
-          }
+  
+          profileData.cart.forEach(item => {
+            axios.put(`http://127.0.0.1:5000/users/${profileData._id}/add_book`, 
+              { book_id: item },
+              {
+                headers: {
+                  Authorization: 'Bearer ' + token
+                }
+              })
+              .then((response) => {
+                console.log(response.data);
+                console.log(response.data.message);
+              })
+              .catch((error) => {
+                console.error('Error adding book to user:', error);
+              });
+          });
+          window.location.reload();
+        } else {
+          alert("You don't have enough Balance.");
+        }
+      } else if (selectedPaymentMethod === 'creditCard') {
+        if (!cardData) {
+          alert("Card data is not available.");
+          return;
+        }
+        if (profileData.cart.length === 0) {
+          alert("Your cart is empty.");
+          return;
+        }
+  
+        if (userInfo.exp !== cardData.exp || userInfo.cvv !== cardData.cvv){
+          alert("Your exp or cvv are not match!");
+          return;
+        }
+  
+        if (cardData.balance >= totalPrice) {
+          const totalBalance = cardData.balance - totalPrice;
+          axios.put(`http://127.0.0.1:5000/cards/${cardData._id}`, 
+            { balance: totalBalance },
+            {
+              headers: {
+                Authorization: 'Bearer ' + token
+              }
+            })
+            .then((response) => {
+              console.log(response.data);
+              console.log(response.data.message);
+            })
+            .catch((error) => {
+              console.error('Error updating card balance:', error);
+            });
+  
+          profileData.cart.forEach(item => {
+            axios.put(`http://127.0.0.1:5000/users/${profileData._id}/add_book`, 
+              { book_id: item },
+              {
+                headers: {
+                  Authorization: 'Bearer ' + token
+                }
+              })
+              .then((response) => {
+                console.log(response.data);
+                console.log(response.data.message);
+              })
+              .catch((error) => {
+                console.error('Error adding book to user:', error);
+              });
+          });
+          window.location.reload();
+        } else {
+          alert("You don't have enough Balance.");
         }
       }
     }
@@ -137,14 +223,14 @@ const PurchasePage = () => {
 
   return (
     <div className="purchase-container">
-    <div className="purchase-details">
-      <h1>Book Details</h1>
-      <div className="book-detail-container">
-        {books.map((book) => (
-          <BookDetail key={books.id} book={book} userId={profileData._id} token={token}/>
-        ))}
+      <div className="purchase-details">
+        <h1>Book Details</h1>
+        <div className="book-detail-container">
+          {books.map((book) => (
+            <BookDetail key={book.id} book={book} userId={profileData._id} token={token}/>
+          ))}
+        </div>
       </div>
-    </div>
       <div className="purchase-details">
         <h1>Payment Method</h1>
         <label>
@@ -162,9 +248,10 @@ const PurchasePage = () => {
             <input
               type="text"
               name="cardNumber"
-              placeholder="Card Number"
-              value={userInfo.cardNumber}
+              placeholder="Plase Enter Credit-Card in setting first."
+              value={cardData ? cardData.Card_number : ''}
               onChange={handleInputChange}
+              readOnly
             />
             <div className="exp-cvv-container">
               <input
@@ -196,7 +283,6 @@ const PurchasePage = () => {
           />
           <span>Balance💰</span>
         </label>
-        {selectedPaymentMethod === 'Balance'}
 
         <p>Total Price: {totalPrice.toFixed(2)} ฿</p>
         <div className="purchase-button-container">
@@ -210,7 +296,3 @@ const PurchasePage = () => {
 };
 
 export default PurchasePage;
-
-
-
-

@@ -379,6 +379,17 @@ def create_card():
             return jsonify(new_card),200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+@app.route("/cards/number/<string:Card_number>", methods = ["GET"])
+@jwt_required()
+@cross_origin()
+def get_card_number(Card_number):
+    all_cards = cards_collection.find()
+    card = next( (i for i in all_cards if i["Card_number"] == Card_number), None)
+    if card:
+        return jsonify(card)
+    else:
+        return jsonify({"error": "Card not found"}), 404
      
 @app.route("/cards/<int:card_id>", methods = ["PUT"])
 @jwt_required()

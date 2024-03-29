@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Libary.css";
-import useToken from './useToken'
+import useToken from './useToken';
 
 function Libary() {
   const [books, setBooks] = useState([]);
@@ -58,17 +58,7 @@ function Libary() {
         console.error('Error fetching books:', error);
       });
   }
-
-  const handleCartClick = (bookId) => {
-    // Logic for adding the book to the cart
-    console.log('Adding book to cart:', bookId);
-  };
-
-  const handleCrossClick = (bookId) => {
-    // Logic for removing the book from the wishlist
-    console.log('Removing book from libary:', bookId);
-  };
-
+  
   return (
     <div className="libary">
       <div className="text1-libary">

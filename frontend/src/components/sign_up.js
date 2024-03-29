@@ -7,7 +7,7 @@ function SignUp(props) {
     email: "",
     user: "",
     password: "",
-    passwordCheck: "",
+    passwordCheck: ""
   });
 
   const [message, setMessage] = useState("");
